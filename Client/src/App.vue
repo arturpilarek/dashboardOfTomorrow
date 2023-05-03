@@ -1,5 +1,11 @@
 <script setup>
-import HelloWorld from "./components/HelloWorld.vue";
+import { useCounterStore } from "./stores/counter";
+
+const counterStore = useCounterStore();
+
+function incrementCounter() {
+  counterStore.increment();
+}
 </script>
 
 <template>
@@ -11,11 +17,18 @@ import HelloWorld from "./components/HelloWorld.vue";
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
     <v-switch label="Switch"></v-switch>
+    <div class="sass-test">
+      <p>Sass testing</p>
+    </div>
+    <div>
+      <p>Pinia testing</p>
+      <p>pinia counter: {{ counterStore.counter }}</p>
+      <button @click="incrementCounter">Increment counter</button>
+    </div>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -27,5 +40,11 @@ import HelloWorld from "./components/HelloWorld.vue";
 }
 .logo.vue:hover {
   filter: drop-shadow(0 0 2em #42b883aa);
+}
+
+.sass-test {
+  p {
+    color: red;
+  }
 }
 </style>
