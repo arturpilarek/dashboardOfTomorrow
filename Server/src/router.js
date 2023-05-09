@@ -6,8 +6,8 @@ const express = require("express")
 // Routes importeres her
 
 //User
-// const userRegisterRoute = require('./routes/user/userRegisterRoute')
-// const userLoginRoute = require('./routes/user/userLoginRoute')
+const userRegisterRoute = require('./routes/user/postUser')
+const userLoginRoute = require('./routes/user/authUser')
 
 //Todos
 // const createTodoRoute = require('./routes/todos/createTodoRoute')
@@ -25,8 +25,8 @@ const router = express.Router()
 // const tokenAuth = require('./middleware/tokenAuth')
 
 //User routes
-// router.post('/register', userRegisterRoute)
-// router.post('/login', userLoginRoute)
+router.post('/register', userRegisterRoute)
+router.post('/login', userLoginRoute)
 
 //Todos routes
 // router.post('/todos/get', tokenAuth, readTodosRoute)
