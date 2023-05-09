@@ -3,7 +3,8 @@ const mongoose = require('mongoose')
 const todoSchema = new mongoose.Schema({
     //Der mangler ID til taskboard, og taskboard som skal kobles til User
     todoID: {
-        type: Number,
+        type: String,   
+        unique: true
     },
     todoName: {
         type: String,
