@@ -12,7 +12,7 @@ const express = require("express")
 //Todos
 const createTodoRoute = require('./routes/todos/createTodosRoute')
 // const readTodosRoute = require('./routes/todos/readTodosRoute')
-// const deleteTodoRoute = require('./routes/todos/deleteTodoRoute')
+const deleteTodoRoute = require('./routes/todos/deleteTodoRoute')
 // const updateTodoRoute = require('./routes/todos/updateTodoRoute')
 
 // Example route
@@ -36,7 +36,7 @@ router.post('/todos/create', createTodoRoute)
 // router.post('/todos/create',tokenAuth, createTodoRoute)
 
 // router.put('/todos/:id',tokenAuth, updateTodoRoute)
-// router.delete('/todos/:id',tokenAuth, deleteTodoRoute)
+router.delete('/todos/:id', deleteTodoRoute)
 
 // Example route
 router.get("/getExample", exampleRoute)
