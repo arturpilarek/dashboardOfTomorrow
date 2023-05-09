@@ -12,11 +12,8 @@ module.exports = async (req, res) => {
         if (!todoId) {
             return res.status(404).json({msg: 'Task not found'})
         }
-
+        // respons på 
         res.status(200).json(`Task ${todoId.todoID} deleted`)
-        // Funktionen deleteOne bruges på ID (sender og venter på respons)
-        //await todoId.deleteOne();
-        //res.send("deleted task with ID: " + todoId);
 
     }
     // Hvis det ikke virker...
