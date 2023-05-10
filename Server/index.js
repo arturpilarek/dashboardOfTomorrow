@@ -3,7 +3,6 @@ const dotenv = require('dotenv')
 const morgan = require('morgan')
 const cors = require('cors')
 const mongoose = require('mongoose')
-
 const router = require('./src/router')
 
 dotenv.config()
@@ -27,8 +26,8 @@ mongoose.connect(process.env.MONGO_ENDPOINT).then(() => {
 })
 
 
-// Server without MongoDB
-app.listen(8082, () => {
-    console.log('server connected, port8082')
-}
-)
+// // Server without MongoDB
+// app.listen(8082, () => {
+//     console.log('server connected, port8082')
+// }
+// )
