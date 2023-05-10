@@ -6,14 +6,15 @@ const express = require("express")
 // Routes importeres her
 
 //User
-// const userRegisterRoute = require('./routes/user/userRegisterRoute')
-// const userLoginRoute = require('./routes/user/userLoginRoute')
+const userRegisterRoute = require('./routes/user/postUser')
+const userLoginRoute = require('./routes/user/authUser')
+const userIsAuth = require('./routes/user/isAuth') //to authenticate, that user is logged in, when trying to go to page
 
 //Todos
 const createTodoRoute = require('./routes/todos/createTodosRoute')
 // const readTodosRoute = require('./routes/todos/readTodosRoute')
 const deleteTodoRoute = require('./routes/todos/deleteTodoRoute')
-const updateTodoRoute = require('./routes/todos/updateTodosRoute')
+// const updateTodoRoute = require('./routes/todos/updateTodoRoute')
 
 // Example route
 const exampleRoute = require("./routes/example/getExampleRoute")
@@ -25,8 +26,9 @@ const router = express.Router()
 // const tokenAuth = require('./middleware/tokenAuth')
 
 //User routes
-// router.post('/register', userRegisterRoute)
-// router.post('/login', userLoginRoute)
+router.post('/register', userRegisterRoute)
+router.post('/login', userLoginRoute)
+
 
 //Todos routes
 // router.post('/todos/get', tokenAuth, readTodosRoute)
@@ -35,7 +37,6 @@ const router = express.Router()
 router.post('/todos/create', createTodoRoute)
 // router.post('/todos/create',tokenAuth, createTodoRoute)
 
-// router.put('/todos/:id',tokenAuth, updateTodoRoute)
 router.put('/todos/:id', updateTodoRoute)
 router.delete('/todos/:id', deleteTodoRoute)
 

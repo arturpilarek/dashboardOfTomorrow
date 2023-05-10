@@ -1,11 +1,21 @@
 <script setup>
+import { onMounted } from "vue";
 import { useCounterStore } from "./stores/counter";
+import { useExpressRoute } from "./stores/apiData";
+import axios from "axios";
 
 const counterStore = useCounterStore();
 
 function incrementCounter() {
   counterStore.increment();
 }
+
+const expressRoute = useExpressRoute();
+
+async function getData() {
+  await expressRoute.getData();
+}
+
 </script>
 
 <template>
@@ -24,6 +34,11 @@ function incrementCounter() {
       <p>Pinia testing</p>
       <p>pinia counter: {{ counterStore.counter }}</p>
       <button @click="incrementCounter">Increment counter</button>
+    </div>
+    <div>
+      <p>Express route testing</p>
+      <button @click="getData">get data</button>
+      <p>apiData: {{ expressRoute.apiData }}</p>
     </div>
   </div>
 </template>
