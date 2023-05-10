@@ -3,7 +3,6 @@ const dotenv = require('dotenv')
 const morgan = require('morgan')
 const cors = require('cors')
 const mongoose = require('mongoose')
-
 const router = require('./src/router')
 
 dotenv.config()
@@ -22,14 +21,21 @@ app.use(router)
 
 // Uncomment this to connect to MongoDB
 
-// mongoose.connect(process.env.MONGO_ENDPOINT).then(() => {
-//     console.log('server connected, port8081')
-//     app.listen(8081)
-// })
+mongoose.connect(process.env.MONGO_ENDPOINT).then(() => {
+    console.log('server connected to mongo, port8081')
+    app.listen(8081)
+})
 
 
 // Server without MongoDB
+<<<<<<< HEAD
 app.listen(8082, () => {
     console.log('server connected, port8082')
 }
 )
+=======
+// app.listen(8081, () => {
+//     console.log('server connected, port8081')
+// }
+// )
+>>>>>>> backendDevelop
