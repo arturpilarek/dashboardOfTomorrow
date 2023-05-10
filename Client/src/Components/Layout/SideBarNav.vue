@@ -135,7 +135,7 @@ export default {
 
 <style lang="scss">
 #navBar {
-  background: linear-gradient(180deg, #47126B 0%, #EA698B 100%);
+  background: linear-gradient(to left, #47126B, #EA698B)
 }
 
 #vCard {
