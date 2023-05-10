@@ -1,3 +1,31 @@
 //Colors
+$todo-pink: #EA698B;
+$doing-pink: #C05299;
+$done-purple: #822FAF;
 
-$navColor: linear-gradient(to left, #47126B, #EA698B);
+$buttons-pink: #EA698B;
+$headline-purle: #973AA8;
+
+//Light mode colors
+$light-background: #F6F6F6;
+$light-tasks: #ECECEC;
+
+//Dark mode colors
+$dark-boardback: #101010;
+$dark-tasks: #202020;
+$dark-describe: #303030;
+
+//Font-sizes
+$text-xxs: 12px;
+$text-xs: 15px;
+$text-small: 20px;
+$text-medium: 22px;
+$text-large: 30px;
+$text-xlarge: 35px;
+$text-xxlarge: 40px;
+
+//Breakpoints
+$screen-mobile: 320px;
+$screen-tablet-vertical: 834px;
+$screen-tablet-horizontal: 1194px;
+$screen-desktop: 1512px;

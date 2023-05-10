@@ -7,8 +7,7 @@ import SideBarNav from "./Components/Layout/SideBarNav.vue";
 
 export default {
   components: {
-    SideBarNav,
-    TaskCard
+    SideBarNav
   }
 }
 
