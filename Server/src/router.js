@@ -8,7 +8,7 @@ const express = require("express")
 //User
 const userRegisterRoute = require('./routes/user/postUser')
 const userLoginRoute = require('./routes/user/authUser')
-const userIsAuth = require('./routes/user/isAuth')
+const userIsAuth = require('./routes/user/isAuth') //to authenticate, that user is logged in, when trying to go to page
 
 //Todos
 // const createTodoRoute = require('./routes/todos/createTodoRoute')
