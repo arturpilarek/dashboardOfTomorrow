@@ -1,12 +1,27 @@
 const TodoModel = require('../../models/TodoModel')
 
 module.exports = async (req, res) => {
-    const {id} = req.params
+    //Get todo ID from Params
+    const todoId = req.params.id
+
+    //Get variables from query
+    let {todoName, todoDescription, todoState, todoCompleted} = req.query
     
     try {
-        res.status(200).json(todo)
-
-        // Logik for at finde en todo og opdatere den
+        // Find todo with id
+        let todoObject = await TodoModel.findOne({todoID: todoId})
+        
+        //Add this data to new model
+        const updateModel = {
+            todoName: todoName,
+            todoDescription: todoDescription,
+            todoState: todoState,
+            todoCompleted: todoCompleted
+        };
+        //Update the model on MongoDB
+        const result = await TodoModel.updateOne(todoObject, updateModel );
+        
+        res.status(200).json(updateModel)
 
     }
     catch (err) {
