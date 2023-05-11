@@ -5,7 +5,6 @@ module.exports = async (req, res) => {
         // Logik for at finde alle todos
         let todos = await TodoModel.find();
 
-
         res.json(todos)
     }
     catch (err) {
