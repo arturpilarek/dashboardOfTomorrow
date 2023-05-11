@@ -12,9 +12,10 @@ const userIsAuth = require('./routes/user/isAuth') //to authenticate, that user 
 
 //Todos
 const createTodoRoute = require('./routes/todos/createTodosRoute')
-// const readTodosRoute = require('./routes/todos/readTodosRoute')
+const readTodosRoute = require('./routes/todos/readTodosRoute')
 const deleteTodoRoute = require('./routes/todos/deleteTodoRoute')
 const updateTodoRoute = require('./routes/todos/updateTodosRoute')
+const readTodoByIDRoute = require('./routes/todos/readTodoByIDRoute')
 
 // Example route
 const exampleRoute = require("./routes/example/getExampleRoute")
@@ -36,7 +37,8 @@ router.post('/login', userLoginRoute)
 //Testing Create route without Auth
 router.post('/todos/create', createTodoRoute)
 // router.post('/todos/create',tokenAuth, createTodoRoute)
-
+router.get('/todos', readTodosRoute)
+router.get('/todos/:id', readTodoByIDRoute)
 router.put('/todos/:id', updateTodoRoute)
 router.delete('/todos/:id', deleteTodoRoute)
 

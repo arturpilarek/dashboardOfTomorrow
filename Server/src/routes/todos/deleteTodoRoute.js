@@ -6,7 +6,7 @@ module.exports = async (req, res) => {
         // Den ID vi gerne vil søge plus en variable til at holde ID
         let todoId = req.params.id
         console.log(todoId)
-        // Finder ID fra databasen som matcher med den ID vi søger
+        // Finder ID fra databasen som matcher med den ID vi søger + sletter
         todoId = await TodoModel.findOneAndDelete({todoID: todoId});
         // Hvis der er fejl
         if (!todoId) {
