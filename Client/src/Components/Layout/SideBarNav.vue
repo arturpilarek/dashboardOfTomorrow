@@ -94,14 +94,10 @@
 </v-app-bar>
 
 <v-main>
-    <task-card>
 
-    </task-card>
-
-    <create-task-modal>
-
-    </create-task-modal>
-
+<update-task-modal>
+  
+</update-task-modal>
 
   <!--  -->
 </v-main>
@@ -117,9 +113,10 @@ import dotLogo from '../../assets/LogoSvg/dot.png'
 import TaskCard from '../Elements/TaskCard.vue';
 import CreateTask from '../Elements/CreateTaskModal.vue'
 import CreateTaskModal from '../Elements/CreateTaskModal.vue';
+import UpdateTaskModal from '../Elements/UpdateTaskModal.vue';
 
 export default {
-  components: { TaskCard, CreateTaskModal },
+  components: { TaskCard, CreateTaskModal, UpdateTaskModal },
     data: () => ({
       dotLogo,
       drawer: null,
@@ -138,7 +135,7 @@ export default {
 
 <style lang="scss">
 #navBar {
-  background: linear-gradient(to left, #47126B, #EA698B)
+  background: linear-gradient(180deg, #47126B 0%, #EA698B 100%);
 }
 
 #vCard {

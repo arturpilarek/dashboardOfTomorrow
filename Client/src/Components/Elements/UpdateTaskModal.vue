@@ -7,9 +7,9 @@
 
         <v-row 
         no-gutters
-        class="d-flex justify-space-between"
         >
         <v-card-subtitle
+        class="pe-16 me-16"
         v-for="sub in subtitles"
         :key="sub.text"
         >
@@ -19,17 +19,37 @@
 
         </v-row>
 
-
+    <v-row>
     <v-textarea
+    style="width:550px;"
     class="pa-6"
-    id="textarea"
+    id="description"
     label="Description"
     >
-
     </v-textarea>
 
+
+    <v-col
+    class="pa-10"
+    >
+    <div
+    id="comments"
+    color="#ECECEC"
+    >
+        <section></section>
+    </div>
+
+    <v-textarea
+    class=""
+    id="comment"
+    label="Make comment"
+    >
+    </v-textarea>
+    </v-col>
+    </v-row>
+
     <template
-    class="d-flex justify-end pr-6"
+    class="d-flex justify-center pl-16 ml-16"
     >
     <v-btn
     id="addBtn"
@@ -37,6 +57,9 @@
     ADD TASK
     </v-btn>
     </template>
+
+
+
 
     </v-card>
 
@@ -68,14 +91,28 @@ export default {
 <style>
 #createCard {
     margin-top: 30px;
-    width: 700px;
+    width: 1000px;
     height: 450px;
     background: #F6F6F6;
     border-radius: 10px;
 }
 
-#textarea {
+#description {
     line-height: 40px;
+    border-radius: 10px;
 }
+
+#comment {
+    line-height: 1px;
+    border-radius: 10px;
+}
+
+#comments {
+    width: 200px;
+    height: 200px;
+    background: #ECECEC;
+}
+
+
 
 </style>
