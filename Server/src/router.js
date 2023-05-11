@@ -56,6 +56,7 @@ const router = express.Router()
 //User routes
 router.post('/register', userRegisterRoute)
 router.post('/login', userLoginRoute)
+router.put('/updateUser/:id', updateUser)
 
 
 //Todos routes
