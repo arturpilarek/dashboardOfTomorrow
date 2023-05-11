@@ -18,6 +18,19 @@ const readTodosRoute = require('./routes/todos/readTodosRoute')
 const readTodosByIDRoute = require('./routes/todos/readTodoByIDRoute')
 const deleteTodoRoute = require('./routes/todos/deleteTodoRoute')
 const updateTodoRoute = require('./routes/todos/updateTodosRoute')
+const readTodoByIDRoute = require('./routes/todos/readTodoByIDRoute')
+
+//Taskboards
+const createTodosBoardRoute = require("./routes/taskboards/createTaskboardRoute");
+const readAllTodosOnBoardRoute = require("./routes/taskboards/readAllTasksOnBoardRoute");
+const updateTaskboardRoute = require("./routes/taskboards/updateTaskboardRoute");
+const deleteTaskboardRoute = require("./routes/taskboards/deleteTaskboardRoute");
+
+//Teams Routes
+const createTeamsRoute = require("./routes/teams/createTeamsRoute")
+const readAllTeamsTodosRoute = require("./routes/teams/readTeamTodosRoute")
+const updateTeamsRoute = require("./routes/teams/updateTeamRoute")
+const deleteTeamsRoute = require("./routes/teams/deleteTeamRoute")
 
 //Taskboards
 const createTodosBoardRoute = require("./routes/taskboards/createTaskboardRoute");
