@@ -1,29 +1,27 @@
 <script>
-// import { onMounted, provide, ref } from "vue";
-import { useCounterStore } from "./stores/counter";
-import { useExpressRoute } from "./stores/apiData";
-import axios from "axios";
-import SideBarNav from "./Components/Layout/SideBarNav.vue";
+// import SideBarNav from "./Components/Layout/SideBarNav.vue";
 
-export default {
-  components: {
-    SideBarNav
-  }
-}
-
+// export default {
+//   components: {
+//     SideBarNav
+//   }
+// }
 </script>
 
 <template>
-
+  <main class="app">
+    <router-view name="sidebar" />
+    <section className="app_view">
+      <router-view name="top-bar" />
+      <router-view />
+    </section>
+  </main>
+  <!-- 
   <side-bar-nav>
 
-  </side-bar-nav>
-
-
+  </side-bar-nav> -->
 </template>
 
 
 <style lang="scss">
-
-
 </style>
