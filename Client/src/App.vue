@@ -4,10 +4,12 @@ import { useCounterStore } from "./stores/counter";
 import { useExpressRoute } from "./stores/apiData";
 import axios from "axios";
 import SideBarNav from "./Components/Layout/SideBarNav.vue";
+import TopBarTaps from '../src/Components/Layout/TopBarTaps.vue';
+import TopBar from '../src/Components/Layout/TopBar.vue';
 
 export default {
   components: {
-    SideBarNav
+    SideBarNav, TopBar, TopBarTaps
   }
 }
 
@@ -15,9 +17,23 @@ export default {
 
 <template>
 
-  <side-bar-nav>
 
-  </side-bar-nav>
+
+  
+  <main>
+    <div id="main-wrapper">
+      <div>
+        
+        <router-view name="sidebar"></router-view>
+      </div>
+        <router-view name="topbar"></router-view>
+  
+    <div>
+
+  </div>
+    </div>
+    </main>
+
 
 
 </template>
@@ -25,5 +41,8 @@ export default {
 
 <style lang="scss">
 
+#main-wrapper{
+  display: flex;
+}
 
 </style>

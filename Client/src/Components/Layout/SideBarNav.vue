@@ -1,103 +1,78 @@
 <template>
-    <v-app id="inspire">
-    <v-navigation-drawer
-      v-model="drawer"
-      app
-      dark
-      id="navBar"
-      
-    >
-
-    <v-list-item>
-        <v-list-item-content>
-        <img :src="dotLogo" alt="" class="logo">
-
-        </v-list-item-content>
-      </v-list-item>
-
-
-    <v-card
-    class="mx-auto"
-    id="vCard"
-    width="300"
-    >
-    <v-list>
-      <v-list-group
-      value="Admin"
+      <v-app id="inspire">
+      <v-navigation-drawer
+        v-model="drawer"
+        app
+        dark
+        id="navBar"
+        expand-on-hover
+        rail
       
       >
-          <template v-slot:activator="{ props }">
+
+      <v-list-item>
+          <v-list-item-content>
+          <img :src="dotLogo" alt="" class="logo">
+          </v-list-item-content>
+        </v-list-item>
+
+
+      <v-list
+
+      >
+        <v-list-group
+        >
+            <template 
+            v-slot:activator="{ props }">
+              <v-list-item
+                v-bind="props"
+                title="PRIVATE"
+              ></v-list-item>
+            </template>
+
             <v-list-item
-              v-bind="props"
-              title="PRIVATE"
+              v-for="([title, icon], i) in privateUser"
+              :key="i"
+              :title="title"
+              :prepend-icon="icon"
+              :value="title"
             ></v-list-item>
-          </template>
+          </v-list-group>
 
-          <v-list-item
-            v-for="([title, icon], i) in privateUser"
-            :key="i"
-            :title="title"
-            :prepend-icon="icon"
-            :value="title"
-          ></v-list-item>
-        </v-list-group>
-    </v-list>
+      </v-list>
 
-    <v-list>
-      <v-list-group 
-      no-action
-        sub-group>
-          <template v-slot:activator="{ props }">
+      <v-list>
+
+        <v-list-group 
+        no-action
+          sub-group>
+            <template v-slot:activator="{ props }">
+              <v-list-item
+                v-bind="props"
+                title="TEAMS"
+              ></v-list-item>
+            </template>
+
             <v-list-item
-              v-bind="props"
-              title="TEAMS"
+              v-for="([title, icon], i) in teamsUser"
+              :key="i"
+              :title="title"
+              :prepend-icon="icon"
+              :value="title"
             ></v-list-item>
-          </template>
-
-          <v-list-item
-            v-for="([title, icon], i) in teamsUser"
-            :key="i"
-            :title="title"
-            :prepend-icon="icon"
-            :value="title"
-          ></v-list-item>
-        </v-list-group>
-    </v-list>
-
-    </v-card>
+          </v-list-group>
+      </v-list>
 
 
-      <!--  -->
-    </v-navigation-drawer>
+      </v-navigation-drawer>
 
-
-<v-app-bar app>
-  <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-
-  <v-toolbar-title>Application</v-toolbar-title>
-
-  <template v-slot:extension>
-    <v-tabs align-with-title>
-      <v-tab>Board</v-tab>
-      <v-tab>Calendar</v-tab>
-      <v-tab>Table</v-tab>
-    </v-tabs>
-    <v-spacer></v-spacer>
-    
-    <v-btn
-    id="addBtn"
-    >
-    + ADD TASK
-    </v-btn>
-  </template>
-
-</v-app-bar>
 
 <v-main>
 
-<update-task-modal>
-  
-</update-task-modal>
+
+<!-- <update-task-modal>
+
+</update-task-modal> -->
 
   <!--  -->
 </v-main>
@@ -116,7 +91,7 @@ import CreateTaskModal from '../Elements/CreateTaskModal.vue';
 import UpdateTaskModal from '../Elements/UpdateTaskModal.vue';
 
 export default {
-  components: { TaskCard, CreateTaskModal, UpdateTaskModal },
+  components: { TaskCard, CreateTaskModal, UpdateTaskModal},
     data: () => ({
       dotLogo,
       drawer: null,
@@ -138,11 +113,6 @@ export default {
   background: linear-gradient(180deg, #47126B 0%, #EA698B 100%);
 }
 
-#vCard {
-  background: transparent;
-  color: white;
-  border: none;
-}
 
 #addBtn {
 width: 113px;
@@ -151,4 +121,6 @@ background: #EA698B;
 color: white;
 border-radius: 10px;
 }
+
+
 </style>
