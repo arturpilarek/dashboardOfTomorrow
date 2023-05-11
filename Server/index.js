@@ -21,7 +21,9 @@ app.use(router)
 
 // Uncomment this to connect to MongoDB
 
-mongoose.connect(process.env.MONGO_ENDPOINT).then(() => {
-    console.log('server connected to mongo, port8081')
-    app.listen(8081)
-})
+
+ // Server without MongoDB
+ app.listen(8082, () => {
+     console.log('server connected, port8082')
+ }
+ )

@@ -14,7 +14,7 @@ const userIsAuth = require('./routes/user/isAuth') //to authenticate, that user 
 const createTodoRoute = require('./routes/todos/createTodosRoute')
 // const readTodosRoute = require('./routes/todos/readTodosRoute')
 const deleteTodoRoute = require('./routes/todos/deleteTodoRoute')
-// const updateTodoRoute = require('./routes/todos/updateTodoRoute')
+const updateTodoRoute = require('./routes/todos/updateTodosRoute')
 
 // Example route
 const exampleRoute = require("./routes/example/getExampleRoute")
@@ -37,7 +37,7 @@ router.post('/login', userLoginRoute)
 router.post('/todos/create', createTodoRoute)
 // router.post('/todos/create',tokenAuth, createTodoRoute)
 
-// router.put('/todos/:id',tokenAuth, updateTodoRoute)
+router.put('/todos/:id', updateTodoRoute)
 router.delete('/todos/:id', deleteTodoRoute)
 
 // Example route
