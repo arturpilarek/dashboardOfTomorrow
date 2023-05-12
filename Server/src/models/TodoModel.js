@@ -3,8 +3,7 @@ const mongoose = require('mongoose')
 const todoSchema = new mongoose.Schema({
     //Der mangler ID til taskboard, og taskboard som skal kobles til User
     todoID: {
-        type: String,   
-        unique: true
+        type: String
     },
     todoName: {
         type: String,
@@ -32,7 +31,7 @@ const todoSchema = new mongoose.Schema({
         type: String
     }
     //Fields missing:
-    //Taskboard ID, User ID, SubTasks(Save for later)
+    //User ID, SubTasks(Save for later)
 }, 
 //Specify what collection in database to use
 {collection: "tasks"})
