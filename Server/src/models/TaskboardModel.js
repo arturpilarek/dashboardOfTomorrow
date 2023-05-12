@@ -1,13 +1,13 @@
 const mongoose = require("mongoose");
-const TodoModel = require("../models/TodoModel")
 
 const taskboardSchema = new mongoose.Schema({
     userID: {type: String},
-    taskboardID: {type: String, required: true},
+    taskboardID: {type: String},
     taskboardName: {type: String, required:true},
-    taskboardTasks: [{type: TodoModel}]
+    taskboardTasksID:[{type: String}]
 
 },
     {collection: "taskboards"}
 );
-module.exports = TaskBoard = mongoose.model("taskboard", taskboardSchema);
+const taskboardModel = mongoose.model('taskboard', taskboardSchema)
+module.exports = taskboardModel;
