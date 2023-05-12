@@ -17,7 +17,8 @@ const deleteTodoRoute = require('./routes/todos/deleteTodoRoute')
 const updateTodoRoute = require('./routes/todos/updateTodosRoute')
 
 //Taskboards
-const createTaskboardRoute = require("./routes/taskboards/createTaskboardRoute")
+const createTodosBoardRoute = require("./routes/taskboards/createTaskboardRoute")
+const readAllTodosOnBoardRoute = require("./routes/taskboards/readAllTasksOnBoardRoute")
 
 // Example route
 const exampleRoute = require("./routes/example/getExampleRoute")
@@ -40,7 +41,9 @@ router.put('/todos/:id', updateTodoRoute)
 router.delete('/todos/:id', deleteTodoRoute)
 
 //Taskboard Routes
-router.post('/taskboards/create', createTaskboardRoute)
+router.get("/taskboards/todos/:boardID", readAllTodosOnBoardRoute)
+router.post("/taskboards/create", createTodosBoardRoute)
+
 
 // Example route
 router.get("/getExample", exampleRoute)
