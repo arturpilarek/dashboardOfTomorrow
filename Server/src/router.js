@@ -14,7 +14,10 @@ const userIsAuth = require('./routes/user/isAuth') //to authenticate, that user 
 const createTodoRoute = require('./routes/todos/createTodosRoute')
 // const readTodosRoute = require('./routes/todos/readTodosRoute')
 const deleteTodoRoute = require('./routes/todos/deleteTodoRoute')
-// const updateTodoRoute = require('./routes/todos/updateTodoRoute')
+const updateTodoRoute = require('./routes/todos/updateTodosRoute')
+
+//Taskboards
+const createTaskboardRoute = require("./routes/taskboards/createTaskboardRoute")
 
 // Example route
 const exampleRoute = require("./routes/example/getExampleRoute")
@@ -29,16 +32,15 @@ const router = express.Router()
 router.post('/register', userRegisterRoute)
 router.post('/login', userLoginRoute)
 
-
 //Todos routes
 // router.post('/todos/get', tokenAuth, readTodosRoute)
-
-//Testing Create route without Auth
 router.post('/todos/create', createTodoRoute)
 // router.post('/todos/create',tokenAuth, createTodoRoute)
-
 router.put('/todos/:id', updateTodoRoute)
 router.delete('/todos/:id', deleteTodoRoute)
+
+//Taskboard Routes
+router.post('/taskboards/create', createTaskboardRoute)
 
 // Example route
 router.get("/getExample", exampleRoute)
