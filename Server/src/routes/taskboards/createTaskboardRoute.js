@@ -24,9 +24,6 @@ module.exports = async (req,res) => {
     taskboardIdFromDB++;
     let taskboardID = `taskboard${taskboardIdFromDB}`;
 
-
-
-
     try {       
         //Create a taskboard
         let newTaskboard = new TaskboardModel({
