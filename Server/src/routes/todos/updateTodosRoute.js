@@ -22,7 +22,7 @@ module.exports = async (req, res) => {
         //Update the model on MongoDB
         const result = await TodoModel.updateOne(todoObject, updateModel );
         
-        res.status(200).json('success!')
+        res.status(200).json(result)
 
     }
     catch (err) {
