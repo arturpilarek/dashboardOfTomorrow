@@ -22,6 +22,12 @@ const readAllTodosOnBoardRoute = require("./routes/taskboards/readAllTasksOnBoar
 const updateTaskboardRoute = require("./routes/taskboards/updateTaskboardRoute");
 const deleteTaskboardRoute = require("./routes/taskboards/deleteTaskboardRoute");
 
+//Teams Routes
+const createTeamsRoute = require("./routes/teams/createTeamsRoute")
+// const readAllTeamsTodosRoute = require("./routes/teams/readTeamTodosRoute")
+// const updateTeamsRoute = require("./routes/teams/updateTeamRoute")
+// const deleteTeamsRoute = require("./routes/teams/deleteTeamRoute")
+
 // Example route
 const exampleRoute = require("./routes/example/getExampleRoute")
 
@@ -47,6 +53,13 @@ router.post("/taskboards/create", createTodosBoardRoute);
 router.get("/taskboards/todos/:boardID", readAllTodosOnBoardRoute);
 router.put("/taskboards/:taskboardId", updateTaskboardRoute);
 router.delete("/taskboards/:taskboardId", deleteTaskboardRoute);
+
+//Team Routes
+router.post("/teams/create", createTeamsRoute);
+// router.get("/teams/:teamId", readAllTeamsTodosRoute);
+// router.put("/teams/:teamId", updateTeamsRoute);
+// router.delete("/teams/:teamId", deleteTeamsRoute);
+
 
 
 // Example route

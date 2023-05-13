@@ -8,22 +8,10 @@ module.exports = async(req,res) => {
     //Get ID
     let taskboardId = req.params.taskboardId;
     try {
+        //Find model and update variabels {WhatToUpdate:UpdatedData}
+        await TaskboardModel.findOneAndUpdate({taskboardID: taskboardId}, {taskboardName: taskboardName});
 
-
-        //Fetch model
-        let taskboardObject = await TaskboardModel.findOne({taskboardID: taskboardId});
-        console.log(taskboardObject);    
-    
-        //Assign changes to new model
-
-        taskboardObject.taskboardName = taskboardName;
-
-        taskboardObject.save();
-
-        
-        //Save model
-
-        res.json(taskboardObject);
+        res.json("Updated taskboard: " + taskboardId);
 
     
     } catch (err) {
