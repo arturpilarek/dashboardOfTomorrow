@@ -29,7 +29,7 @@ const deleteTaskboardRoute = require("./routes/taskboards/deleteTaskboardRoute")
 const createTeamsRoute = require("./routes/teams/createTeamsRoute")
 // const readAllTeamsTodosRoute = require("./routes/teams/readTeamTodosRoute")
 // const updateTeamsRoute = require("./routes/teams/updateTeamRoute")
-// const deleteTeamsRoute = require("./routes/teams/deleteTeamRoute")
+const deleteTeamsRoute = require("./routes/teams/deleteTeamRoute")
 
 // Example route
 const exampleRoute = require("./routes/example/getExampleRoute")
@@ -63,7 +63,7 @@ router.delete("/taskboards/:taskboardId", deleteTaskboardRoute);
 router.post("/teams/create", createTeamsRoute);
 // router.get("/teams/:teamId", readAllTeamsTodosRoute);
 // router.put("/teams/:teamId", updateTeamsRoute);
-// router.delete("/teams/:teamId", deleteTeamsRoute);
+router.delete("/teams/:teamId", deleteTeamsRoute);
 
 
 
