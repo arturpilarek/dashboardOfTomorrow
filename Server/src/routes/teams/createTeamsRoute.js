@@ -5,7 +5,6 @@ module.exports = async(req,res) => {
     let {teamName, teamDescription, teamTaskboardID } = req.query;
     console.log(req.query)
     
-
     //UserID should come from the person sending the createTeams request
         
     //Generate an ID
