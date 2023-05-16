@@ -1,12 +1,16 @@
 const TaskboardModel = require("../../models/TaskboardModel");
+const TeamModel = require("../../models/TeamModel");
 
 module.exports = async (req,res) => {
 
     //Get variables from req.query and assign to variable
-    let {taskboardName, taskboardTasks} = req.query
+    let {taskboardName, taskboardTasks, teamId} = req.query
 
     //Get User ID from req - Not yet implemented
     // let userCreatedTaskboardID = req.query.UserID
+
+    //Get Team ID from req - Not yet implemented
+    let TeamID = teamId;
 
     //Search database for objects matching TodoModel
     const taskboardCounter = await TaskboardModel.find({TaskboardModel});
@@ -24,13 +28,25 @@ module.exports = async (req,res) => {
     taskboardIdFromDB++;
     let taskboardID = `taskboard${taskboardIdFromDB}`;
 
-    try {       
+    try {      
+        
+        if(TeamID){
+            let teamObject = await TeamModel.findOne({teamID: TeamID});
+            console.log(teamObject);
+            teamObject.teamTaskboardID.push(taskboardID);
+            console.log(taskboardID)
+            await teamObject.save();
+    
+        }
+
         //Create a taskboard
         let newTaskboard = new TaskboardModel({
             taskboardID: taskboardID,
             taskboardName: taskboardName,
             taskboardTasks: taskboardTasks
         });
+
+        
 
         await newTaskboard.save();
         res.json(newTaskboard);

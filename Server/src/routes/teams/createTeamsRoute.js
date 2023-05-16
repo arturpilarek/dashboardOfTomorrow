@@ -2,7 +2,7 @@ const TeamModel = require("../../models/TeamModel");
 
 module.exports = async(req,res) => {
     //Assign team variables from req.query
-    let {teamName, teamDescription } = req.query;
+    let {teamName, teamDescription, teamTaskboardID } = req.query;
     console.log(req.query)
     
 
@@ -33,7 +33,9 @@ module.exports = async(req,res) => {
         let teamModel = new TeamModel({
             teamID: teamId,
             teamName: teamName,
-            teamDescription: teamDescription
+            teamDescription: teamDescription,
+            teamTaskboardID: teamTaskboardID
+            
             
         });
 
