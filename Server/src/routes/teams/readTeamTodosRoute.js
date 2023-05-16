@@ -10,21 +10,18 @@ const TodoModel = require('../../models/TodoModel');
 
 module.exports = async (req, res) => {
     const teamId = req.params.teamId;
-
     try {
-        // Finde todo via id??
-        let teamTodo = await TeamModel.find({teamID: teamId});
-
+        // Find teamet via Id
+        let teamObject = await TeamModel.findOne({teamID: teamId});
+        
         // teamTodos er de todos teamet har.
         // Laves i en for loop for at "printe" alle todos ud, til den tilhørende team.
-        console.log(teamTodo.teamTasks)
-        for (let i = 0; i < teamTodo.teamTasks.length; i++) {
-            console.log()
+        for (let i = 0; i < teamObject.teamTasks.length; i++) {
+            // Finder teamObject der indeholder teamTask der indeholder et array med todos i.
+            let currentTodo = await TodoModel.findOne({todoID:teamObject.teamTasks[i]})
+            console.log(currentTodo)
         }
 
-        // Hvert team har nogle todos. Dvs. hver bruger kan se disse todo.
-        // Finder team for at se todo
-        
         res.json(`Succes`)
     }
     catch (err) {
