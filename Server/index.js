@@ -26,7 +26,7 @@ mongoose.connect(process.env.MONGO_ENDPOINT).then(() => {
 })
 
 
-// // Server without MongoDB
+// Server without MongoDB
 // app.listen(8082, () => {
 //     console.log('server connected, port8082')
 // })
