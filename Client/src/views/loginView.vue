@@ -45,12 +45,16 @@ export default {
       e.preventDefault()
       const requestOptions = {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin" : "*",
+          "Access-Control-Allow-Credentials" : true
+        },
         body: JSON.stringify({ email: this.email, password: this.password })
       };
-      fetch('/login', requestOptions)
-          .then(response => response.json())
-          .then(data => alert(data));
+      console.log(requestOptions)
+
+      fetch('/api/login', requestOptions)
+          .then(response => console.log(response))
+          .then(data => console.log(data));
     }
   }
 

@@ -5,11 +5,13 @@ import { useExpressRoute } from "./stores/apiData";
 import axios from "axios";
 import SideBarNav from "./Components/Layout/SideBarNav.vue";
 import LoginView from "./views/loginView.vue";
+import SignupView from "./views/signupView.vue";
 
 export default {
   components: {
     SideBarNav,
-    LoginView
+    LoginView,
+    SignupView
   }
 }
 
@@ -20,9 +22,11 @@ export default {
   <side-bar-nav>
 
   </side-bar-nav>
+  <signup-view/>
   -->
-
   <login-view/>
+
+
 </template>
 
 
