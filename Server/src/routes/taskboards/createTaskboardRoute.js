@@ -9,7 +9,7 @@ module.exports = async (req,res) => {
 
 
     //Get Team ID from req - Not yet implemented
-    let TeamID = teamId;
+    let TeamID = teamID;
 
 
 
