@@ -1,13 +1,14 @@
 const TaskboardModel = require("../../models/TaskboardModel");
 const TeamModel = require("../../models/TeamModel");
+const UserModel = require("../../models/UserModel");
 
 module.exports = async (req,res) => {
 
     //Get variables from req.query and assign to variable
-    let {taskboardName, taskboardTasks, teamId} = req.query
+    let {taskboardName, taskboardTasks, teamId, userEmail} = req.query
 
     //Get User ID from req - Not yet implemented
-    // let userCreatedTaskboardID = req.query.UserID
+    let UserEmail = userEmail
 
     //Get Team ID from req - Not yet implemented
     let TeamID = teamId;
@@ -36,14 +37,20 @@ module.exports = async (req,res) => {
             teamObject.teamTaskboardID.push(taskboardID);
             console.log(taskboardID)
             await teamObject.save();
-    
+        }
+        if(UserEmail){
+            let userObject = await UserModel.findOne({email: UserEmail});
+            console.log(userObject);
+            //push the taskboard into user taskboard array
+            userObject.taskboards_id.push(taskboardID);
+            await userObject.save();
         }
 
         //Create a taskboard
         let newTaskboard = new TaskboardModel({
             taskboardID: taskboardID,
             taskboardName: taskboardName,
-            taskboardTasks: taskboardTasks
+            taskboardTasks: taskboardTasks,
         });
 
         

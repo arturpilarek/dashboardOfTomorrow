@@ -1,10 +1,13 @@
 const TodoModel = require('../../models/TodoModel');
 const taskboardModel = require('../../models/TaskboardModel')
+const UserModel = require("../../models/UserModel");
+const TeamModel = require('../../models/TeamModel');
 
 module.exports = async (req, res) => {
     //Taking all properties from query and assign to value
-    let {taskboardId, todoName, todoDescription, todoState, todoCompleted, taskboardID } = req.query
-
+    let {taskboardId, todoName, todoDescription,
+         todoState, todoCompleted, taskboardID, userEmail,teamId } = req.query
+    console.log("this is query:");
     console.log(req.query)
 
     //Get the last element in todo Tasks and get the id from it
@@ -26,6 +29,24 @@ module.exports = async (req, res) => {
     
     try {
 
+        if(userEmail){
+            let userObject = await UserModel.findOne({email: userEmail});
+            console.log("User Object: ")
+            console.log(userObject);
+            //push the taskboard into user taskboard array
+            userObject.todos_id.push(taskTodoID);
+            await userObject.save();
+        }
+
+        if(teamId){
+            let teamObject = await TeamModel.findOne({teamID: teamId});
+            console.log("Team Object: ")
+            console.log(teamObject);
+            //push the taskboard into user taskboard array
+            teamObject.teamTasks.push(taskTodoID);
+            await teamObject.save();
+        }
+
         //If there's an taskboardId, than do if loop
         if(taskboardId){
             //Fetch the taskboard matching ID
@@ -43,7 +64,9 @@ module.exports = async (req, res) => {
             todoDescription: todoDescription,
             todoState: todoState,
             todoCompleted: todoCompleted,
-            taskboardId: taskboardId
+            taskboardId: taskboardId,
+            userId: userEmail
+
         });
         
         await todoTask.save();

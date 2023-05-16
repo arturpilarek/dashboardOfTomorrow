@@ -6,7 +6,11 @@ const userSchema = new mongoose.Schema({
     email: { type: String, unique: true },
     password: { type: String },
     token: { type: String },
+    todos_id: [{type: String}],
+    taskboards_id: [{type: String}],
+    teams_id: [{type: String}]
 },
     {collection: "User"}
 );
-module.exports = User = mongoose.model("user", userSchema);
+let UserModel = mongoose.model("user", userSchema)
+module.exports = UserModel;

@@ -2,7 +2,7 @@ const TeamModel = require("../../models/TeamModel");
 
 module.exports = async(req,res) => {
     //Assign team variables from req.query
-    let {teamName, teamDescription, teamTaskboardID } = req.query;
+    let {teamName, teamDescription, teamTaskboardID, userEmail} = req.query;
     console.log(req.query)
     
     //UserID should come from the person sending the createTeams request
@@ -27,6 +27,14 @@ module.exports = async(req,res) => {
 
 
     try {
+
+        if(userEmail){
+            let userObject = await UserModel.findOne({email: userEmail});
+            console.log(userObject);
+            //push the taskboard into user taskboard array
+            userObject.taskboards_id.push(teamId);
+            await userObject.save();
+        }
         
         //Create a new TeamModel using query variables
         let teamModel = new TeamModel({
