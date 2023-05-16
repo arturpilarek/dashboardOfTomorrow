@@ -8,6 +8,11 @@ module.exports = async (req,res) => {
     let {taskboardName, taskboardTasks, teamID, userID} = req.body
 
 
+    //Get Team ID from req - Not yet implemented
+    let TeamID = teamId;
+
+
+
     //Search database for objects matching TodoModel
     const taskboardCounter = await TaskboardModel.find({TaskboardModel});
 
