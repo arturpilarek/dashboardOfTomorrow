@@ -22,10 +22,13 @@ const todoSchema = new mongoose.Schema({
     todoCompleted: {
         type:Boolean
     },
-    userId: {
+    userID: {
         type: String
     },
-    teamId: {
+    teamID: {
+        type: String
+    },
+    taskboardID: {
         type: String
     }
     //Fields missing:
