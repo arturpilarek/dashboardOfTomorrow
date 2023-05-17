@@ -30,6 +30,8 @@
 <script>
 import dotLogo from './../assets/LogoSvg/dot.png'
 import DotAnimation from "../Components/animation/dotAnimation.vue";
+import axios from "axios";
+
 export default {
   name: "loginView",
   components: {DotAnimation},
@@ -43,18 +45,13 @@ export default {
   methods: {
     login(e){
       e.preventDefault()
-      const requestOptions = {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin" : "*",
-          "Access-Control-Allow-Credentials" : true
-        },
-        body: JSON.stringify({ email: this.email, password: this.password })
-      };
-      console.log(requestOptions)
+      axios.post("http://localhost:8081/login", {
+            email: this.email,
+            password: this.password,
+          })
+          .then((response) => console.log(response.data))
+          .catch((error) => console.log(error));
 
-      fetch('/api/login', requestOptions)
-          .then(response => console.log(response))
-          .then(data => console.log(data));
     }
   }
 
@@ -67,6 +64,9 @@ export default {
   background: linear-gradient(180deg, #47126B 0%, #EA698B 100%);
   width: 60vw;
   height: 100vh;
+  position: relative;
+  top: 0;
+  left: 0;
 }
 
 
