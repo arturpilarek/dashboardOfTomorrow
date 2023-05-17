@@ -54,7 +54,7 @@
     <v-btn
     id="addBtn"
     >
-    ADD TASK
+    UPDATE TASK
     </v-btn>
     </template>
 
