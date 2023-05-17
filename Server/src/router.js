@@ -44,6 +44,7 @@ const router = express.Router()
 router.post('/register', userRegisterRoute)
 router.post('/login', userLoginRoute)
 
+
 //Todos routes
 // router.post('/todos/get', tokenAuth, readTodosRoute)
 router.post('/todos/create', createTodoRoute)
