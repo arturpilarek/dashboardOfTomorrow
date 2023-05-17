@@ -9,9 +9,7 @@ const teamSchema = new mongoose.Schema({
         required: true
     },
     teamMember: [{
-        userId: {
-            type: String,
-        },
+         type: String,
     }],
     teamDescription:{
         type: String,
@@ -20,7 +18,7 @@ const teamSchema = new mongoose.Schema({
         type: String,
     }],
     teamTasks: [{type: String}],
-    userId: {type: String}
+    userID: {type: String}
 }, 
 //Specify what collection in database to use
 {collection: "teams"})
