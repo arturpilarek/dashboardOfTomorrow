@@ -22,9 +22,9 @@ export default {
   <side-bar-nav>
 
   </side-bar-nav>
-  <signup-view/>
-  -->
   <login-view/>
+  -->
+  <signup-view/>
 
 
 </template>
