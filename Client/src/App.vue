@@ -4,14 +4,14 @@ import { useCounterStore } from "./stores/counter";
 import { useExpressRoute } from "./stores/apiData";
 import axios from "axios";
 import SideBarNav from "./Components/Layout/SideBarNav.vue";
-import TopBarTaps from '../src/Components/Layout/TopBarTaps.vue';
 import TopBar from '../src/Components/Layout/TopBar.vue';
+import TasksContainer from "./Components/Elements/TasksContainer.vue";
 import LoginView from "./views/loginView.vue";
 import SignupView from "./views/signupView.vue";
 
 export default {
   components: {
-    SideBarNav, TopBar, TopBarTaps,
+    SideBarNav, TopBar, TasksContainer,
     LoginView,
     SignupView
   }
@@ -21,9 +21,33 @@ export default {
 
 <template>
 
-  <side-bar-nav>
 
-  </side-bar-nav>
+
+  
+    <main>
+      <section id="main-wrapper">
+        <section>
+        
+          <router-view name="sidebar"></router-view>
+        </section>
+      
+        <!-- <section
+        id="tbSection"
+        >
+        <router-view name="topbar"></router-view>
+
+      </section>   -->
+    </section>
+    <!-- <tasks-container
+    class="ml-16"
+    ></tasks-container>
+     -->
+<!-- 
+     <tasks-container></tasks-container> -->
+
+
+      </main>
+
 
 
 </template>
@@ -33,6 +57,10 @@ export default {
 
 #main-wrapper{
   display: flex;
+}
+#tbSection{
+  height: 100%;
+  width: 100%;
 }
 
 </style>
