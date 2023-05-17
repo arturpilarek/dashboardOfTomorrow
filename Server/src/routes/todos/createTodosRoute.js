@@ -5,10 +5,8 @@ const TeamModel = require('../../models/TeamModel');
 
 module.exports = async (req, res) => {
     //Taking all properties from query and assign to value
-    let {taskboardId, todoName, todoDescription,
-         todoState, todoCompleted, taskboardID, userEmail,teamId } = req.query
-    console.log("this is query:");
-    console.log(req.query)
+    let {todoName, todoDescription,
+         todoState, todoCompleted, taskboardID, userID, teamID } = req.body
 
     //Get the last element in todo Tasks and get the id from it
     //Search database for objects matching TodoModel
@@ -29,28 +27,24 @@ module.exports = async (req, res) => {
     
     try {
 
-        if(userEmail){
-            let userObject = await UserModel.findOne({email: userEmail});
-            console.log("User Object: ")
-            console.log(userObject);
+        if(userID){
+            let userObject = await UserModel.findOne({userID: userID});
             //push the taskboard into user taskboard array
             userObject.todos_id.push(taskTodoID);
             await userObject.save();
         }
 
-        if(teamId){
-            let teamObject = await TeamModel.findOne({teamID: teamId});
-            console.log("Team Object: ")
-            console.log(teamObject);
+        if(teamID){
+            let teamObject = await TeamModel.findOne({teamID: teamID});
             //push the taskboard into user taskboard array
             teamObject.teamTasks.push(taskTodoID);
             await teamObject.save();
         }
 
         //If there's an taskboardId, than do if loop
-        if(taskboardId){
+        if(taskboardID){
             //Fetch the taskboard matching ID
-            let taskboardObject = await taskboardModel.findOne({taskboardId: taskboardID})
+            let taskboardObject = await taskboardModel.findOne({taskboardID: taskboardID})
             //Push task into taskboard.Tasks Array
             taskboardObject.taskboardTasksID.push(taskTodoID)
             //Save the changes
@@ -64,8 +58,8 @@ module.exports = async (req, res) => {
             todoDescription: todoDescription,
             todoState: todoState,
             todoCompleted: todoCompleted,
-            taskboardId: taskboardId,
-            userId: userEmail
+            taskboardID: taskboardID,
+            userID: userID
 
         });
         

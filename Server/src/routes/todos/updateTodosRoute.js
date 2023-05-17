@@ -3,6 +3,7 @@ const TodoModel = require('../../models/TodoModel')
 module.exports = async (req, res) => {
     //Get todo ID from Params
     const todoId = req.params.id
+    
 
     //Get variables from query
     let {todoName, todoDescription, todoState, todoCompleted} = req.query
@@ -21,7 +22,7 @@ module.exports = async (req, res) => {
         //Update the model on MongoDB
         const result = await TodoModel.updateOne(todoObject, updateModel );
         
-        res.status(200).json(result)
+        res.status(200).json('success!')
 
     }
     catch (err) {
