@@ -18,7 +18,6 @@ const readTodosRoute = require('./routes/todos/readTodosRoute')
 const readTodosByIDRoute = require('./routes/todos/readTodoByIDRoute')
 const deleteTodoRoute = require('./routes/todos/deleteTodoRoute')
 const updateTodoRoute = require('./routes/todos/updateTodosRoute')
-const readTodoByIDRoute = require('./routes/todos/readTodoByIDRoute')
 
 //Taskboards
 const createTodosBoardRoute = require("./routes/taskboards/createTaskboardRoute");
