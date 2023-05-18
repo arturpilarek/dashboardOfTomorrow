@@ -23,7 +23,7 @@ module.exports = async (req, res) => {
 
     //Increment the ID
     todoIdFromDB++;
-    let taskTodoID = `todoTask${todoIdFromDB}`;
+    let taskTodoID = `todo${todoIdFromDB}`;
     
     try {
 

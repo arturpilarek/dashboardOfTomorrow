@@ -32,6 +32,9 @@ const readAllTeamsTodosRoute = require("./routes/teams/readTeamTodosRoute")
 const updateTeamsRoute = require("./routes/teams/updateTeamRoute")
 const deleteTeamsRoute = require("./routes/teams/deleteTeamRoute")
 
+//Super Route
+const superIDRoute = require("./routes/fetchAll/superRoute");
+
 // Example route
 const exampleRoute = require("./routes/example/getExampleRoute")
 
@@ -67,6 +70,9 @@ router.post("/teams/create", createTeamsRoute);
 router.get("/teams/:teamId", readAllTeamsTodosRoute);
 router.put("/teams/:id", updateTeamsRoute);
 router.delete("/teams/:teamId", deleteTeamsRoute);
+
+//Super Routes
+router.get("/fetchAll/:userid", superIDRoute)
 
 
 
