@@ -31,9 +31,11 @@ const createTeamsRoute = require("./routes/teams/createTeamsRoute")
 const readAllTeamsTodosRoute = require("./routes/teams/readTeamTodosRoute")
 const updateTeamsRoute = require("./routes/teams/updateTeamRoute")
 const deleteTeamsRoute = require("./routes/teams/deleteTeamRoute")
+const userAndTeamsRoute = require("./routes/teams/userAndTeamsRoute")
 
 // Example route
 const exampleRoute = require("./routes/example/getExampleRoute")
+
 
 const router = express.Router()
 
@@ -67,6 +69,7 @@ router.post("/teams/create", createTeamsRoute);
 router.get("/teams/:teamId", readAllTeamsTodosRoute);
 router.put("/teams/:id", updateTeamsRoute);
 router.delete("/teams/:teamId", deleteTeamsRoute);
+router.get("/teams/addMember/:teamId", userAndTeamsRoute);
 
 
 
