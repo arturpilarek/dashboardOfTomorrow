@@ -40,7 +40,7 @@ module.exports = async (req, res) => {
             teamObject.teamTasks.push(taskTodoID);
             await teamObject.save();
         }
-
+        
         //If there's an taskboardId, than do if loop
         if(taskboardID){
             //Fetch the taskboard matching ID

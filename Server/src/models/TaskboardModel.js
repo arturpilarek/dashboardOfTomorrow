@@ -4,7 +4,7 @@ const taskboardSchema = new mongoose.Schema({
     userID: {type: String},
     taskboardID: {type: String},
     taskboardName: {type: String, required:true},
-    taskboardTasksID:[{type: String}],
+    taskboardTasksID:[{type: Object}],
     teamID: {type: String}
 
 },

@@ -15,9 +15,9 @@ const teamSchema = new mongoose.Schema({
         type: String,
     },
     teamTaskboardID: [{
-        type: String,
+        type: Object,
     }],
-    teamTasks: [{type: String}],
+    teamTasks: [{type: Object}],
     userID: {type: String}
 }, 
 //Specify what collection in database to use

@@ -2,24 +2,24 @@ const TaskboardModel = require("../../models/TaskboardModel");
 const UserModel = require("../../models/UserModel")
 const TodoModel = require("../../models/TodoModel");
 
-module.exports = async(req,res) => {
+module.exports = async (req, res) => {
     //get id from req.params
     let taskboardId = req.params.taskboardId;
 
     try {
-   
 
-    let taskboardObject = await TaskboardModel.findOne({taskboardID: taskboardId});
-        
+
+        let taskboardObject = await TaskboardModel.findOneAndDelete({ taskboardID: taskboardId });
+
         // Finder ID fra databasen som matcher med den ID vi søger + sletter
         // Hvis der er fejl
         if (!taskboardObject) {
-            return res.status(404).json({msg: 'taskboard not found'})
+            return res.status(404).json({ msg: 'taskboard not found' })
         }
         //Get User id from todo
         let userId = taskboardObject.userID;
         //find user from userID
-        let userObject = await UserModel.findOne({userID: userId});
+        let userObject = await UserModel.findOne({ userID: userId });
         //variable to hold users todo array
         let userTodoArray = userObject.taskboards_id;
         //Get the index of wanted todo
@@ -31,14 +31,18 @@ module.exports = async(req,res) => {
 
         //find all todos from taskboard and delete them
         for (let i = 0; i < taskboardObject.taskboardTasksID.length; i++) {
-            let currentTodo = await TodoModel.findOneAndDelete({todoID: taskboardObject.taskboardTasksID[i]})
+            let currentTodo = await TodoModel.findOneAndDelete({ todoID: taskboardObject.taskboardTasksID[i] })
+            console.log(currentTodo);
         }
+
+        let result = await TaskboardModel.findOneAndDelete({taskboardID: taskboardId})
+
 
         // //delete the todo from MongoDB
         // let result = await TaskboardModel.deleteOne({taskboardID: taskboardId});
 
 
-        // respons på 
+        // respons på success
         res.status(200).json(`taskboard ${taskboardId} deleted`)
 
     }

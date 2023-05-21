@@ -27,10 +27,12 @@ const updateTaskboardRoute = require("./routes/taskboards/updateTaskboardRoute")
 const deleteTaskboardRoute = require("./routes/taskboards/deleteTaskboardRoute");
 
 //Teams Routes
-const createTeamsRoute = require("./routes/teams/createTeamsRoute")
-const readAllTeamsTodosRoute = require("./routes/teams/readTeamTodosRoute")
-const updateTeamsRoute = require("./routes/teams/updateTeamRoute")
-const deleteTeamsRoute = require("./routes/teams/deleteTeamRoute")
+const createTeamsRoute = require("./routes/teams/createTeamsRoute");
+const readAllTeamsTodosRoute = require("./routes/teams/readTeamTodosRoute");
+const updateTeamsRoute = require("./routes/teams/updateTeamRoute");
+const deleteTeamsRoute = require("./routes/teams/deleteTeamRoute");
+const addUserToTeamRoute = require("./routes/teams/addToTeamRoute");
+const removeUserFromTeamRoute = require("./routes/teams/removeUserFromTeamRoute")
 
 //Super Route
 const superIDRoute = require("./routes/fetchAll/superRoute");
@@ -70,6 +72,8 @@ router.post("/teams/create", createTeamsRoute);
 router.get("/teams/:teamId", readAllTeamsTodosRoute);
 router.put("/teams/:id", updateTeamsRoute);
 router.delete("/teams/:teamId", deleteTeamsRoute);
+router.post("/teams/addToTeam/:teamID", addUserToTeamRoute);
+router.post("/teams/removeUserFromTeam/:teamID", removeUserFromTeamRoute);
 
 //Super Routes
 router.get("/fetchAll/:userid", superIDRoute)

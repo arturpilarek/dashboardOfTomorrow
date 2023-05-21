@@ -1,6 +1,4 @@
 const mongoose = require("mongoose");
-const TaskboardModel = require("./TaskboardModel")
-const TodoModel = require("./TodoModel");
 
 
 const superSchema = new mongoose.Schema({
@@ -12,7 +10,19 @@ const superSchema = new mongoose.Schema({
         userID: {type: String},
         taskboardID: {type: String},
         taskboardName: {type: String, required: true},
-        taskboardTodos: [TodoModel.schema]
+        taskboardTasksID: [{type: Object}]
+    }],
+    teams:[{
+        teamID: {type: String},
+        teamName: {type: String},
+        teamDescription: {type: String},
+        teamMember: [{type: String}],
+        teamTaskboards: [{
+            taskboardID: {type: String},
+            taskboardName: {type: String},
+            taskboardTodos: [{type: Object}]
+
+        }]
     }]
 
 })
