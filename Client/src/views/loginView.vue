@@ -6,7 +6,7 @@
       <v-sheet width="400" class="mx-auto d-flex flex-column justify-center">
         <h2 class="text-h2 mb-16 text-uppercase align-self-center text-purple">Welcome!</h2> <!-- change color of text -->
         <p class="text-overline">Please log in</p>
-        <v-form fast-fail @submit="login">
+        <v-form fast-fail @submit.prevent="login">
           <v-text-field
               v-model="email"
               label="E-mail"
@@ -30,7 +30,7 @@
 <script>
 import dotLogo from './../assets/LogoSvg/dot.png'
 import DotAnimation from "../Components/animation/dotAnimation.vue";
-import axios from "axios";
+import { useAuthStore } from '@/stores';
 
 export default {
   name: "loginView",
@@ -43,14 +43,10 @@ export default {
     }
   },
   methods: {
-    login(e){
-      e.preventDefault()
-      axios.post("http://localhost:8081/login", {
-            email: this.email,
-            password: this.password,
-          })
-          .then((response) => console.log(response.data))
-          .catch((error) => console.log(error));
+    login(){
+      const authStore = useAuthStore();
+      return authStore.login(this.email, this.password)
+
 
     }
   }
