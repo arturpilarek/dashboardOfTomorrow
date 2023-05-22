@@ -40,6 +40,7 @@ const superIDRoute = require("./routes/fetchAll/superRoute");
 // Example route
 const exampleRoute = require("./routes/example/getExampleRoute")
 
+
 const router = express.Router()
 
 // Routes defineres her
@@ -77,6 +78,7 @@ router.post("/teams/removeUserFromTeam/:teamID", removeUserFromTeamRoute);
 
 //Super Routes
 router.get("/fetchAll/:userid", superIDRoute)
+router.get("/teams/addMember/:teamId", userAndTeamsRoute);
 
 
 
