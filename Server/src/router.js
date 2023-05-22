@@ -37,6 +37,7 @@ const userAndTeamsRoute = require("./routes/teams/userAndTeamsRoute")
 const exampleRoute = require("./routes/example/getExampleRoute")
 
 
+
 const router = express.Router()
 
 // Routes defineres her
