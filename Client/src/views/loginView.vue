@@ -6,7 +6,7 @@
       <v-sheet width="400" class="mx-auto d-flex flex-column justify-center">
         <h2 class="text-h2 mb-16 text-uppercase align-self-center text-purple">Welcome!</h2> <!-- change color of text -->
         <p class="text-overline">Please log in</p>
-        <v-form fast-fail @submit.prevent="login">
+        <v-form @submit.prevent="login">
           <v-text-field
               v-model="email"
               label="E-mail"
@@ -33,8 +33,12 @@ import DotAnimation from "../Components/animation/dotAnimation.vue";
 import { useAuthStore } from '../stores/auth.store.js'
 
 export default {
-  name: "loginView",
+  name: "Login",
   components: {DotAnimation},
+  setup () {
+    const authStore = useAuthStore();
+    return {authStore}
+  },
   data(){
     return {
       logo: dotLogo,
@@ -44,10 +48,9 @@ export default {
   },
   methods: {
     login(){
-      const authStore = useAuthStore();
-      return authStore.login(this.email, this.password)
+      return this.authStore.login(this.email, this.password)
     }
-  }
+  },
 
 }
 </script>
