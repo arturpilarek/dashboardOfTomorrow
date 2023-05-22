@@ -30,7 +30,7 @@
 <script>
 import dotLogo from './../assets/LogoSvg/dot.png'
 import DotAnimation from "../Components/animation/dotAnimation.vue";
-import { useAuthStore } from '@/stores';
+import { useAuthStore } from '../stores/auth.store.js'
 
 export default {
   name: "loginView",

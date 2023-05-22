@@ -1,6 +1,8 @@
 import { defineStore } from 'pinia'
 import {request} from "../_helpers/fetchWrapper.js";
-import { useTasksStore, useTeamsStore, useBoardsStore } from '@/stores';
+import { useTeamsStore } from '../stores/teams.store.js';
+import {useBoardsStore} from "./taskboards.store.js";
+import {useTasksStore} from "./tasks.store.js";
 
 
 export const useAuthStore = defineStore({
@@ -19,7 +21,10 @@ export const useAuthStore = defineStore({
       // store user details and jwt in local storage to keep user logged in between page refreshes
       localStorage.setItem('user', JSON.stringify(user))
 
-      useTasksStore()
+      const data = await request.get(`/fetchAll/${this.user.id}`)
+
+      console.log(data)
+
 
     },
 
