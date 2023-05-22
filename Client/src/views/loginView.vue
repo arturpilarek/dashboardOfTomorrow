@@ -30,15 +30,11 @@
 <script>
 import dotLogo from './../assets/LogoSvg/dot.png'
 import DotAnimation from "../Components/animation/dotAnimation.vue";
-import { useAuthStore } from '../stores/auth.store.js'
+import axios from "axios";
 
 export default {
-  name: "Login",
+  name: "loginView",
   components: {DotAnimation},
-  setup () {
-    const authStore = useAuthStore();
-    return {authStore}
-  },
   data(){
     return {
       logo: dotLogo,
@@ -47,10 +43,17 @@ export default {
     }
   },
   methods: {
-    login(){
-      return this.authStore.login(this.email, this.password)
+    login(e){
+      e.preventDefault()
+      axios.post("http://localhost:8081/login", {
+            email: this.email,
+            password: this.password,
+          })
+          .then((response) => console.log(response.data))
+          .catch((error) => console.log(error));
+
     }
-  },
+  }
 
 }
 </script>

@@ -1,5 +1,6 @@
 <script>
 // import { onMounted, provide, ref } from "vue";
+import { useCounterStore } from "./stores/counter";
 import { useExpressRoute } from "./stores/apiData";
 import axios from "axios";
 import SideBarNav from "./Components/Layout/SideBarNav.vue";
