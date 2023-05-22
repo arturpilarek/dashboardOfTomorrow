@@ -23,9 +23,25 @@ module.exports = async (req, res) => {
 
     //Increment the ID
     todoIdFromDB++;
+<<<<<<< HEAD
     let taskTodoID = `todo${todoIdFromDB}`;
+=======
+    let taskTodoID = `todoTask${todoIdFromDB}`;
+
+    
+
+>>>>>>> 2015687 (dateAdded done + tilføjet + rigtig format)
     
     try {
+    //Append date
+    let dateAdded;
+    
+    // Change dateformat from crazy shit to normal
+    const currentDate = new Date();
+    const year = currentDate.getFullYear();
+    const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+    const day = String(currentDate.getDate()).padStart(2, '0');
+    dateAdded = `${year}-${month}-${day}`;
 
         if(userID){
             let userObject = await UserModel.findOne({userID: userID});
@@ -50,6 +66,8 @@ module.exports = async (req, res) => {
             //Save the changes
             await taskboardObject.save();
         }
+
+        
         
         //Create todoTask using values from req.query
         let todoTask = new TodoModel({
@@ -59,7 +77,8 @@ module.exports = async (req, res) => {
             todoState: todoState,
             todoCompleted: todoCompleted,
             taskboardID: taskboardID,
-            userID: userID
+            userID: userID,
+            dateAdded: dateAdded
 
         });
         

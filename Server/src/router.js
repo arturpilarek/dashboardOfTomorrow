@@ -41,6 +41,7 @@ const superIDRoute = require("./routes/fetchAll/superRoute");
 const exampleRoute = require("./routes/example/getExampleRoute")
 
 
+
 const router = express.Router()
 
 // Routes defineres her
