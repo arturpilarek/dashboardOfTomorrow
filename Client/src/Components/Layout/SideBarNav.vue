@@ -80,6 +80,7 @@
               <v-btn
                 rounded
                 variant="text"
+                @click="logout"
               >
                 Disconnect
               </v-btn>
@@ -126,6 +127,9 @@ import TaskCard from '../Elements/TaskCard.vue';
 import CreateTask from '../Elements/CreateTaskModal.vue'
 import CreateTaskModal from '../Elements/CreateTaskModal.vue';
 import UpdateTaskModal from '../Elements/UpdateTaskModal.vue';
+import { useAuthStore } from '@/stores';
+
+const authStore = useAuthStore();
 
 
 export default {
@@ -147,7 +151,12 @@ export default {
       ['Project 1', 'mdi-circle'],
       ['Project 2', 'mdi-circle'],
     ]
-  })
+  }),
+  methods: {
+    logout () {
+      return authStore.logout()
+    }
+  }
 }
 </script>
 
