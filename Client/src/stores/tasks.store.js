@@ -14,7 +14,6 @@ export const useTasksStore = defineStore({
                 todoDescription: description,
                 todoState: state,
                 todoCompleted: completed,
-                taskboardID:, // ?????
             })
         },
         async update (name, description, state, completed, id) {
