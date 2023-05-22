@@ -33,6 +33,7 @@ const updateTeamsRoute = require("./routes/teams/updateTeamRoute");
 const deleteTeamsRoute = require("./routes/teams/deleteTeamRoute");
 const addUserToTeamRoute = require("./routes/teams/addToTeamRoute");
 const removeUserFromTeamRoute = require("./routes/teams/removeUserFromTeamRoute")
+const userAndTeamsRoute = require("./routes/teams/userAndTeamsRoute")
 
 //Super Route
 const superIDRoute = require("./routes/fetchAll/superRoute");

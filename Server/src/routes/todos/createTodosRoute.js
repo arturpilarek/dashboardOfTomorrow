@@ -23,14 +23,7 @@ module.exports = async (req, res) => {
 
     //Increment the ID
     todoIdFromDB++;
-<<<<<<< HEAD
-    let taskTodoID = `todo${todoIdFromDB}`;
-=======
     let taskTodoID = `todoTask${todoIdFromDB}`;
-
-    
-
->>>>>>> 2015687 (dateAdded done + tilføjet + rigtig format)
     
     try {
     //Append date
