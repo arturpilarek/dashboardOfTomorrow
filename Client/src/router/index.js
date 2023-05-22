@@ -1,17 +1,18 @@
 import { createRouter, createWebHistory } from "vue-router"
-import Login from "../views/Login.vue"
-import Signup from "../views/Signup.vue"
+import Sidebar from "../Components/Layout/SideBarNav.vue"
+import Topbar from "../Components/Layout/TopBar.vue"
 import StartingPage from "../views/StartingPage.vue"
-import Sidebar from '../Components/Layout/SideBarNav.vue'
-import Topbar from '../Components/Layout/TopBar.vue'
+import EditUser from "../views/editUserView.vue"
+import Login from "../views/loginView.vue"
+import Signup from "../views/signupView.vue"
 
 const routes = [
   {
     path: "/",
     name: "Starting page",
     components: {
-         sidebar: Sidebar,
-         topbar: Topbar,
+      sidebar: Sidebar,
+      topbar: Topbar,
       default: StartingPage,
     },
   },
@@ -27,6 +28,15 @@ const routes = [
     name: "Signup page",
     components: {
       default: Signup,
+    },
+  },
+  {
+    path: "/edit-user",
+    name: "Edit user",
+    components: {
+      sidebar: Sidebar,
+      topbar: Topbar,
+      default: EditUser,
     },
   },
 ]
