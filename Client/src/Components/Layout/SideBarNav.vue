@@ -1,59 +1,39 @@
 <template>
   <v-app id="inspire">
-    <v-navigation-drawer
-      v-model="drawer"
-      app
-      dark
-      id="navBar"
-      expand-on-hover
-      rail
-    >
+    <v-navigation-drawer v-model="drawer" app dark id="navBar" expand-on-hover rail >
+
       <v-list-item>
         <v-list-item-content>
-          <img :src="dotLogo" alt="" class="logo" />
+          <img :src="dotLogo" alt="" class="logo">
         </v-list-item-content>
       </v-list-item>
 
+      
       <v-list>
         <v-list-group>
           <template v-slot:activator="{ props }">
-            <v-list-item
-              prepend-icon="mdi-account"
-              v-bind="props"
-              title="PRIVATE"
-            ></v-list-item>
+
+            <v-list-item prepend-icon="mdi-account" v-bind="props" title="PRIVATE"></v-list-item>
           </template>
 
-          <v-list-item
-            v-for="([title, icon], i) in privateUser"
-            :key="i"
-            :title="title"
-            :prepend-icon="icon"
-            :value="title"
-          ></v-list-item>
+          <v-list-item v-for="([title, icon], i) in privateUser" :key="i" :title="title" :prepend-icon="icon"
+            :value="title"></v-list-item>
         </v-list-group>
+
       </v-list>
 
       <v-list>
+
         <v-list-group no-action sub-group>
           <template v-slot:activator="{ props }">
-            <v-list-item
-              prepend-icon="mdi-account-group"
-              v-bind="props"
-              title="TEAMS"
-            ></v-list-item>
+            <v-list-item prepend-icon="mdi-account-group" v-bind="props" title="TEAMS"></v-list-item>
           </template>
 
-          <v-list-item
-            v-for="([title, icon], i) in teamsUser"
-            :key="i"
-            :title="title"
-            :prepend-icon="icon"
-            :value="title"
-          ></v-list-item>
+          <v-list-item v-for="([title, icon], i) in teamsUser" :key="i" :title="title" :prepend-icon="icon"
+            :value="title"></v-list-item>
         </v-list-group>
       </v-list>
-
+      
       <v-spacer></v-spacer>
 
       <v-container class="avatarContainer pa-7" fluid>
@@ -100,9 +80,13 @@
         </template>
       </v-menu>
     </v-container> -->
+
+
     </v-navigation-drawer>
 
+
     <v-main>
+
       <create-task-modal></create-task-modal>
       <!-- <update-task-modal>
 
@@ -110,44 +94,56 @@
 
       <!--  -->
     </v-main>
+
+
   </v-app>
 </template>
 
 <script>
-import dotLogo from "../../assets/LogoSvg/dot.png";
-import TaskCard from "../Elements/TaskCard.vue";
-import CreateTask from "../Elements/CreateTaskModal.vue";
-import CreateTaskModal from "../Elements/CreateTaskModal.vue";
-import UpdateTaskModal from "../Elements/UpdateTaskModal.vue";
+import dotLogo from '../../assets/LogoSvg/dot.png'
+import TaskCard from '../Elements/TaskCard.vue';
+import CreateTask from '../Elements/CreateTaskModal.vue'
+import CreateTaskModal from '../Elements/CreateTaskModal.vue';
+import UpdateTaskModal from '../Elements/UpdateTaskModal.vue';
+import { useAuthStore } from '@/stores';
+
+const authStore = useAuthStore();
+
 
 export default {
   components: { TaskCard, CreateTaskModal, UpdateTaskModal },
   data: () => ({
     dotLogo,
     drawer: null,
-    open: ["Users"],
+    open: ['Users'],
     user: {
-      initials: "AI",
-      fullName: "Anna Ipsen",
-      email: "anna@anna.dk",
+      initials: 'AI',
+      fullName: 'Anna Ipsen',
+      email: 'anna@anna.dk',
     },
     privateUser: [
-      ["Project 1", "mdi-circle"],
-      ["Project 2", "mdi-circle"],
+      ['Project 1', 'mdi-circle'],
+      ['Project 2', 'mdi-circle'],
     ],
     teamsUser: [
-      ["Project 1", "mdi-circle"],
-      ["Project 2", "mdi-circle"],
-    ],
+      ['Project 1', 'mdi-circle'],
+      ['Project 2', 'mdi-circle'],
+    ]
   }),
-};
+  methods: {
+    logout () {
+      return authStore.logout()
+    }
+  }
+}
 </script>
 
 <style lang="scss">
 #navBar {
-  background: linear-gradient(180deg, #47126b 0%, #ea698b 100%);
+  background: linear-gradient(180deg, #47126B 0%, #EA698B 100%);
   position: relative;
 }
+
 
 .v-list-item--density-default:not(.v-list-item--nav).v-list-item--one-line {
   color: white;
@@ -157,4 +153,5 @@ export default {
   position: absolute;
   bottom: 0;
 }
+
 </style>
