@@ -3,6 +3,7 @@ import {request} from "../_helpers/fetchWrapper.js";
 import { useTeamsStore } from '../stores/teams.store.js';
 import {useBoardsStore} from "./taskboards.store.js";
 import {useTasksStore} from "./tasks.store.js";
+import { router } from '../router/index.js'
 
 
 export const useAuthStore = defineStore({
@@ -14,18 +15,20 @@ export const useAuthStore = defineStore({
   actions: {
     async login(email, password) {
       const user = await request.post('/login', {email: email, password: password})
-
+      console.log(user)
       // update pinia state
       this.user = user;
 
       // store user details and jwt in local storage to keep user logged in between page refreshes
       localStorage.setItem('user', JSON.stringify(user))
 
-      const data = await request.get(`/fetchAll/${this.user.id}`)
+      console.log(this.user)
+
+      const data = await request.get(`/fetchAll/user1`)
 
       console.log(data)
 
-
+      await router.push('/')
     },
 
     logout (){
@@ -33,7 +36,7 @@ export const useAuthStore = defineStore({
       localStorage.removeItem('user')
     },
 
-    async register (email, password, firstName, lastName) {
+    async register (firstName, lastName, email, password, ) {
       const user = await request.post('/register', {
         first_name: firstName,
         last_name: lastName,

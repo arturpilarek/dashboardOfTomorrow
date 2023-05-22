@@ -1,3 +1,4 @@
+
 <template>
   <v-app id="inspire">
     <v-navigation-drawer v-model="drawer" app dark id="navBar" expand-on-hover rail >
@@ -105,12 +106,10 @@ import TaskCard from '../Elements/TaskCard.vue';
 import CreateTask from '../Elements/CreateTaskModal.vue'
 import CreateTaskModal from '../Elements/CreateTaskModal.vue';
 import UpdateTaskModal from '../Elements/UpdateTaskModal.vue';
-import {useAuthStore} from "../../stores/auth.store.js";
-
-const authStore = useAuthStore();
 
 
 export default {
+  name: "Sidebar",
   components: { TaskCard, CreateTaskModal, UpdateTaskModal },
   data: () => ({
     dotLogo,
@@ -130,11 +129,6 @@ export default {
       ['Project 2', 'mdi-circle'],
     ]
   }),
-  methods: {
-    logout () {
-      return authStore.logout()
-    }
-  }
 }
 </script>
 

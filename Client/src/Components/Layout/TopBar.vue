@@ -41,6 +41,7 @@
 
 <script>
 export default {
+  name: "Topbar",
 data() {
     return {
         tabs: [

@@ -2,4 +2,9 @@
     <div>
       <h2>Starting page</h2>
     </div>
-  </template> 
+  </template>
+<script>
+export default {
+  name: "StartingPage"
+}
+</script>

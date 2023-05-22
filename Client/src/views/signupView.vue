@@ -59,13 +59,18 @@
 </template>
 
 <script>
-import dotLogo from './../assets/LogoSvg/dot.png'
+import dotLogo from '../assets/LogoSvg/dot.png'
 import DotAnimation from "../Components/animation/dotAnimation.vue";
-import axios from "axios";
+import {mapStores} from 'pinia'
+import {useAuthStore} from "../stores/auth.store.js";
 
 export default {
   name: "loginView",
   components: {DotAnimation},
+  setup() {
+    const authStore = useAuthStore()
+    return {authStore}
+  },
   data(){
     return {
       logo: dotLogo,
@@ -112,17 +117,9 @@ export default {
         this.errorMessage = 'Passwords are not the same'
         return
       }
-
-      axios.post("http://localhost:8081/register", {
-        first_name: this.user.firstName,
-        last_name: this.user.lastName,
-        email: this.user.email,
-        password: this.user.password,
-        })
-          .then((response) => console.log(response.data))
-          .catch((error) => console.log(error));
-      }
+      this.authStore.register(this.user.firstName, this.user.lastName, this.user.email, this.user.password)
     }
+  },
 }
 </script>
 
