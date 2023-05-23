@@ -1,21 +1,21 @@
-<script>
+<script setup>
 // import { onMounted, provide, ref } from "vue";
 import { useExpressRoute } from "./stores/apiData";
 import axios from "axios";
 import SideBarNav from "./Components/Layout/SideBarNav.vue";
-import TopBar from '../src/Components/Layout/TopBar.vue';
+import TopBar from "../src/Components/Layout/TopBar.vue";
 import TasksContainer from "./Components/Elements/TasksContainer.vue";
 import LoginView from "./views/loginView.vue";
 import SignupView from "./views/signupView.vue";
 
-export default {
-  components: {
-    SideBarNav, TopBar, TasksContainer,
-    LoginView,
-    SignupView
-  }
-}
+import { useTeamsStore } from "./stores/teams.store";
+import { useBoardsStore } from "./stores/taskboards.store";
 
+const teamsStore = useTeamsStore();
+console.log(teamsStore.teams);
+
+const boardsStore = useBoardsStore();
+console.log(boardsStore.boards);
 </script>
 
 <template>
@@ -34,7 +34,7 @@ export default {
     class="ml-16"
     ></tasks-container>
      -->
-<!-- 
+    <!-- 
      <tasks-container></tasks-container> -->
   </main>
 </template>
@@ -46,12 +46,11 @@ a {
   color: inherit;
 }
 
-#main-wrapper{
+#main-wrapper {
   display: flex;
 }
-#tbSection{
+#tbSection {
   height: 100%;
   width: 100%;
 }
-
 </style>
