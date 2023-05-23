@@ -7,8 +7,7 @@ module.exports = async (req,res) => {
 
     //Get UserID from req.body
     let currentUserID = req.body.UserID;
-    console.log(req.body)
-    console.log(currentUserID)
+
 
     try {
 

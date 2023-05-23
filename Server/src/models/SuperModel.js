@@ -10,7 +10,7 @@ const superSchema = new mongoose.Schema({
         userID: {type: String},
         taskboardID: {type: String},
         taskboardName: {type: String, required: true},
-        taskboardTasksID: [{type: Object}]
+        taskboardTodos: [{type: Object}]
     }],
     teams:[{
         teamID: {type: String},

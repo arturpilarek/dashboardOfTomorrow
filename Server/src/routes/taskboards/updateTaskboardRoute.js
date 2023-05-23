@@ -2,7 +2,7 @@ const TaskboardModel = require("../../models/TaskboardModel");
 
 module.exports = async(req,res) => {
     //Get variabels from query
-    let {taskboardName} = req.query
+    let {taskboardName} = req.body
 
 
     //Get ID

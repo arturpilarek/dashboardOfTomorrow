@@ -6,7 +6,7 @@ module.exports = async (req, res) => {
     
 
     //Get variables from query
-    let {todoName, todoDescription, todoState, todoCompleted} = req.query
+    let {todoName, todoDescription, todoState, todoCompleted} = req.body
     
     try {
         // Find todo with id

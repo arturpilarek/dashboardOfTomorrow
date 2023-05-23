@@ -6,9 +6,7 @@ module.exports = async (req,res) => {
     let currentTeamID = req.params.teamID;
 
     //Get UserID from req.body
-    let currentUserID = req.body.UserID;
-    console.log(req.body)
-    console.log(currentUserID)
+    let currentUserID = req.body.userID;
 
     try {
         //Find team model

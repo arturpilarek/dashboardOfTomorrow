@@ -31,14 +31,14 @@ module.exports = async (req,res) => {
             let currentTaskboard = await TaskboardModel.findOne({taskboardID: taskboardIDArray[i]});
             
             //New taskboard
-            let newTaskboard = new TaskboardModel({
+            let newTaskboard = {
                 userID: currentTaskboard.userID,
                 taskboardID: currentTaskboard.taskboardID,
                 taskboardName: currentTaskboard.taskboardName,
-                taskboardTasksID: [],
+                taskboardTodos: [],
                 teamID: currentTaskboard.teamID
                 
-            });
+            };
 
             //variable for Todo Array 
             let todoArray = currentTaskboard.taskboardTasksID;
@@ -47,7 +47,7 @@ module.exports = async (req,res) => {
             for (let j = 0; j < todoArray.length; j++) {                
                 //get current Todo
                 let currentTodo = await TodoModel.findOne({todoID: todoArray[j]})    
-                newTaskboard.taskboardTasksID.push(currentTodo);        
+                newTaskboard.taskboardTodos.push(currentTodo);        
             }
           
         

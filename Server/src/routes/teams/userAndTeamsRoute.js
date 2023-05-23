@@ -8,7 +8,7 @@
 const TeamModel = require("../../models/TeamModel");
 
 module.exports = async (req, res) => {
-    let userId = req.query.userID;
+    let userId = req.body.userID;
     let teamId = req.params.teamId;
 
     try {

@@ -6,7 +6,7 @@ module.exports = async (req, res) => {
     
 
     //Get variables from query
-    let {teamName, teamDescription, teamMember} = req.query
+    let {teamName, teamDescription, teamMember} = req.body
     
     try {
         await TeamModel.findOneAndUpdate(
