@@ -10,7 +10,7 @@ export const useAuthStore = defineStore({
   id: 'auth',
   state: () => ({
     // initialize state from local storage to enable user to stay logged in
-    user: JSON.parse(localStorage.getItem('user'))
+    user: JSON.parse(localStorage.getItem('user')),
   }),
   actions: {
     async login(email, password) {
@@ -30,6 +30,7 @@ export const useAuthStore = defineStore({
 
       await router.push('/')
     },
+
     logout (){
       this.user = null;
       localStorage.removeItem('user')
