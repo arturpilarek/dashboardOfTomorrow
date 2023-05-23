@@ -46,8 +46,6 @@ export default {
     login(){
       const authStore = useAuthStore();
       return authStore.login(this.email, this.password)
-
-
     }
   }
 
