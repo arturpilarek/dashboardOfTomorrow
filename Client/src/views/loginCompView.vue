@@ -18,6 +18,18 @@
               label="Password"
           ></v-text-field>
 
+          <v-alert
+              type="error"
+              variant="tonal"
+              density="compact"
+              closable
+              prominent
+              icon="mdi-alert-circle-outline"
+              :text="errorMessage"
+              class="mb-5"
+              v-if=" errorMessage !== '' "
+          ></v-alert>
+
           <v-btn type="submit" block class="mt-2 text-white" color="#EA698B" >Log in</v-btn> <!-- change color to variable -->
         </v-form>
         <div class="mt-2">
@@ -42,11 +54,10 @@ const user = ref({
 
 function login(e){
     e.preventDefault()
+    errorMessage.value = ''
     const authStore = useAuthStore();
     authStore.login(user.value.email, user.value.password)
         .catch(error => errorMessage.value = error.response.data)
-
-
 }
 
 </script>

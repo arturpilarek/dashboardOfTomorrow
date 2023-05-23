@@ -33,7 +33,8 @@
             :value="title"></v-list-item>
         </v-list-group>
       </v-list>
-      
+
+
       <v-spacer></v-spacer>
 
       <v-container class="avatarContainer pa-7" fluid>
@@ -154,35 +155,33 @@
   </v-app>
 </template>
 
-<script>
+<script setup>
 import dotLogo from '../../assets/LogoSvg/dot.png'
 import TaskCard from '../Elements/TaskCard.vue';
 import CreateTask from '../Elements/CreateTaskModal.vue'
 import CreateTaskModal from '../Elements/CreateTaskModal.vue';
 import UpdateTaskModal from '../Elements/UpdateTaskModal.vue';
+import { ref } from "vue";
 
 
-export default {
-  components: { TaskCard, CreateTaskModal, UpdateTaskModal },
-  data: () => ({
-    dotLogo,
-    drawer: null,
-    open: ['Users'],
-    user: {
-      initials: 'AI',
-      fullName: 'Anna Ipsen',
-      email: 'anna@anna.dk',
-    },
-    privateUser: [
-      ['Project 1', 'mdi-circle'],
-      ['Project 2', 'mdi-circle'],
-    ],
-    teamsUser: [
-      ['Project 1', 'mdi-circle'],
-      ['Project 2', 'mdi-circle'],
-    ]
-  })
-}
+const drawer = ref(null)
+const open = ref(['Users'])
+const user = ref({
+  initials: 'AI',
+  fullName: 'Anna Ipsen',
+  email: 'anna@anna.dk',
+})
+
+const privateUser = ref([
+  ['Project 1', 'mdi-circle'],
+  ['Project 2', 'mdi-circle'],
+])
+
+const teamsUser = ref ([
+  ['Project 1', 'mdi-circle'],
+  ['Project 2', 'mdi-circle'],
+])
+
 </script>
 
 <style lang="scss">
