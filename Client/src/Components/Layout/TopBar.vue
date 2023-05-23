@@ -19,21 +19,12 @@
       <p>{{ this.tabChosen }}</p>
       <v-spacer></v-spacer>
 
-    <div>
-    <v-btn
-    id="addBtn"
-    @click="showModal = true"
-    
-    >
-    + ADD TASK
-</v-btn>
-</div>
-
-
-<createModal v-if="showModal" @click="showModal = false"></createModal>
-
-
-
+      <div>
+        <v-btn id="addBtn" @click="showModal = true">
+          + ADD TASK
+        </v-btn>
+      </div>
+      <createModal v-if="showModal" @click="showModal = false"></createModal>
     </div>
   </v-container>
 </template>
@@ -44,18 +35,18 @@ import { ref } from 'vue';
 
 export default {
   name: "Topbar",
-data() {
-  return {
-    tab: null,
+  data() {
+    return {
+      tab: null,
       drawer: null,
-        tabs: [
-            {tab: 'BOARD', to:'/Client/src/views/Startingpage.vue'},
-            {tab: 'CALENDAR', to:'/Client/src/views/Startingpage.vue'},
-            {tab: 'TABLE', to:'/Client/src/views/Startingpage.vue'}
-        ]
+      tabs: [
+        { tab: 'BOARD', to: '/Client/src/views/Startingpage.vue' },
+        { tab: 'CALENDAR', to: '/Client/src/views/Startingpage.vue' },
+        { tab: 'TABLE', to: '/Client/src/views/Startingpage.vue' }
+      ]
     }
-},
-setup() {
+  },
+  setup() {
     const showModal = ref(false);
 
     return {
