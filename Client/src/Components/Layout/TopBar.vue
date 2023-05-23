@@ -60,8 +60,8 @@ export default {
             {tab: 'TABLE', to:'/Client/src/views/Startingpage.vue'}
         ]
     }
-},
-setup() {
+  },
+  setup() {
     const showModal = ref(false);
 
     return {
