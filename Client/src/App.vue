@@ -30,10 +30,10 @@ console.log(boardsStore.boards);
         <router-view></router-view>
       </section>
     </section>
-    <!-- <tasks-container
+    <tasks-container
     class="ml-16"
     ></tasks-container>
-     -->
+     
     <!-- 
      <tasks-container></tasks-container> -->
   </main>

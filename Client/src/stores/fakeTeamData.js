@@ -15,7 +15,7 @@ export const teams = [
                         "todoID": "todo4",
                         "todoName": "SuperRouteTesting",
                         "todoDescription": "Testing if Super Route Works",
-                        "todoState": "Crying",
+                        "todoState": "doing",
                         "todoCompleted": false,
                         "taskboardID": "taskboard3",
                         "__v": 0,
@@ -26,7 +26,7 @@ export const teams = [
                         "todoID": "todo5",
                         "todoName": "PleeeaseSuperRoute",
                         "todoDescription": "Testing if Super Route Works",
-                        "todoState": "Crying",
+                        "todoState": "doing",
                         "todoCompleted": false,
                         "taskboardID": "taskboard3",
                         "__v": 0,
@@ -42,7 +42,6 @@ export const teams = [
         "teamID": "team2",
         "teamName": "Flower Poooower",
         "teamMember": [
-            null,
             "user1"
         ],
         "teamTaskboards": [
@@ -55,7 +54,7 @@ export const teams = [
                         "todoID": "todo6",
                         "todoName": "PleeeaseSuperRoute",
                         "todoDescription": "Testing if Super Route Works",
-                        "todoState": "Crying",
+                        "todoState": "doing",
                         "todoCompleted": false,
                         "taskboardID": "taskboard4",
                         "__v": 0,
@@ -66,7 +65,7 @@ export const teams = [
                         "todoID": "todo7",
                         "todoName": "PleeeaseSuperRoute",
                         "todoDescription": "Testing if Super Route Works",
-                        "todoState": "Crying",
+                        "todoState": "doing",
                         "todoCompleted": false,
                         "taskboardID": "taskboard4",
                         "__v": 0,

@@ -1,11 +1,11 @@
 import { defineStore } from "pinia"
 import { request } from "../_helpers/fetchWrapper.js"
-import { tasks } from "./fakeTaskboardsData.js"
+import { fakeTaskboards } from "./fakeTaskboardsData.js"
 
 export const useBoardsStore = defineStore({
   id: "boards",
   state: () => ({
-    boards: tasks,
+    boards: fakeTaskboards,
   }),
   actions: {
     async create(name, tasks) {
