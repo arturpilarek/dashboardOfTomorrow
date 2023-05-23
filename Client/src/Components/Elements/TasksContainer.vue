@@ -12,6 +12,8 @@
             <v-list-item-content>{{ task.title }}</v-list-item-content>
           </v-list-item>
         </v-list>
+
+        
       </v-col>
       <v-col cols="4">
         <div
@@ -38,6 +40,8 @@
             <v-list-item-content>{{ task.title }}</v-list-item-content>
           </v-list-item>
         </v-list>
+
+
       </v-col>
     </v-row>
   </div>
@@ -52,11 +56,12 @@ export default {
       tasks: []
     }
   },
-  methods: {
-    filteredTasks(status) {
-      return this.tasks.filter(task => task.status === status)
-    }
-  },
+  // methods: {
+  //   filteredTasks() {
+  //   const taskStore = useTaskStore();
+  //   return taskStore.tasks.filter(task => task.status === taskStore.taskStatus);
+  // },
+  // },
 //   created() {
 //     const store = useStore()
 //     this.tasks = store.state.tasks

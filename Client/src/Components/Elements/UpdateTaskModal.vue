@@ -8,15 +8,6 @@
     >
     
 
-
-      <template v-slot:activator="{ props }">
-        <v-btn
-          color="#EA698B"
-          v-bind="props"
-        >
-          Open Dialog
-        </v-btn>
-      </template>
       <v-card>
 
     <v-container class="bg-surface-variant">
@@ -129,20 +120,19 @@ export default {
                 {
                     text: 'DATES'
                 }
-            ]
-        }
+            ],
+            watch: {
+    dialog (val) {
+      !val && alert('Dialog is closing')
     }
+  }
+        }
+    },
+
 }
 </script>
 
 <style scoped>
-/* #updateCard {
-    margin-top: 30px;
-    width: 100%;
-    height: fit-content;
-    background: #F6F6F6;
-    border-radius: 10px;
-} */
 
 #description {
     line-height: 100px;
@@ -153,15 +143,6 @@ export default {
     background-color: #ececec;
     height: 250px;
 }
-
-
-
-
-/* :deep .v-input__details {
-    display:none;
-} */
-
-
 
 
 </style>
