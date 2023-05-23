@@ -7,12 +7,6 @@ module.exports = async (req,res) => {
     //Get variables from req.query and assign to variable
     let {taskboardName, taskboardTasks, teamID, userID} = req.body
 
-
-    //Get Team ID from req - Not yet implemented
-    let TeamID = teamID;
-
-
-
     //Search database for objects matching TodoModel
     const taskboardCounter = await TaskboardModel.find({TaskboardModel});
 
@@ -56,7 +50,6 @@ module.exports = async (req,res) => {
         });
 
         
-
         await newTaskboard.save();
         res.json(newTaskboard);
 

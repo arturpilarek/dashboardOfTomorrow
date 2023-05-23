@@ -8,6 +8,14 @@ module.exports = async (req,res) => {
     //Get UserID from req.body
     let currentUserID = req.body.userID;
 
+    if(!currentTeamID){
+        res.status(502).json("Team ID not valid");
+    }
+
+    if(!currentUserID){
+        res.status(502).json("User ID not valid");
+    }
+
     try {
         //Find team model
         let currentTeamObject = await TeamModel.findOne({teamID: currentTeamID});
@@ -30,11 +38,6 @@ module.exports = async (req,res) => {
         currentUserObject.save();
 
         res.status(200).json(`Succesfully added ${currentUserID} to ${currentTeamID}`)
-
-        
-
-
-
 
 
     } catch (err) {
