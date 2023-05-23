@@ -18,6 +18,13 @@
         icon="mdi-alert-circle-outline"
         :text="errorMessage"
         class="mb-5"
+        v-if=" errorMessage !== '' "
+      ></v-alert>
+      <v-alert
+          v-if="statusMsg"
+          closable
+          :text="statusMsg"
+          type="success"
       ></v-alert>
 
       <v-form validate-on="submit" @submit="signUp">
@@ -71,7 +78,9 @@ import DotAnimation from "../Components/animation/dotAnimation.vue";
 import { mapStores } from "pinia";
 import { useAuthStore } from "../stores/auth.store.js";
 
-const errorMessage = ref("hej");
+const errorMessage = ref("");
+let statusMsg = ref("");
+
 
 const user = ref({
   firstName: "",
@@ -103,12 +112,9 @@ const rules = {
   ],
   password: [
     (value) => {
-      if (
-        /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* -`=)(?!.* ).{8,20}$/.test(
-          value
-        )
-      )
-        return true;
+      if (/^(?=.*\d)(?=.*[!@#$%^&*])*(?!.*[=-\s])(?=.*[a-z])(?=.*[A-Z]).{8,30}$/.test(value)) return true;
+
+      return "Password must contain one big character and one number, and no space, = or -"
     },
   ],
 };
@@ -116,13 +122,15 @@ const rules = {
 function signUp(e) {
   e.preventDefault();
 
-  if (user.password !== user.repeatPassword) {
+  if (user.value.password !== user.value.repeatPassword) {
     errorMessage.value = "Passwords do not match";
     return;
   }
 
   const authStore = useAuthStore();
-  authStore.register(user.firstName, user.lastName, user.email, user.password);
+  authStore.register(user.value.firstName, user.value.lastName, user.value.email, user.value.password)
+      .then (statusMsg.value = "You succesfully registered. Please log in")
+      .catch(error => errorMessage.value = error.response.data)
 }
 </script>
 

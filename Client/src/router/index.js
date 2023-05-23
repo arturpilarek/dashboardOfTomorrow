@@ -4,7 +4,7 @@ import Topbar from "../Components/Layout/TopBar.vue"
 import { useAuthStore } from "../stores/auth.store.js"
 import StartingPage from "../views/StartingPage.vue"
 import EditUser from "../views/editUserView.vue"
-import Login from "../views/loginView.vue"
+import Login from "../views/loginCompView.vue"
 import Signup from "../views/signupCompView.vue"
 
 const routes = [

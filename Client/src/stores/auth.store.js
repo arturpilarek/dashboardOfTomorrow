@@ -15,7 +15,6 @@ export const useAuthStore = defineStore({
   actions: {
     async login(email, password) {
       const user = await request.post('/login', {email: email, password: password})
-      console.log(user)
       // update pinia state
       this.user = user;
 
