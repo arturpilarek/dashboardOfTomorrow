@@ -142,7 +142,7 @@
 
     <v-main>
 
-      <create-task-modal></create-task-modal>
+      <!-- <create-task-modal></create-task-modal> -->
       <!-- <update-task-modal>
 
 </update-task-modal> -->
