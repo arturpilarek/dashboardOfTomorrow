@@ -10,7 +10,9 @@ import SignupView from "./views/signupView.vue";
 
 export default {
   components: {
-    SideBarNav, TopBar, TasksContainer,
+    SideBarNav,
+    TopBar,
+    TasksContainer,
     LoginView,
     SignupView
   }

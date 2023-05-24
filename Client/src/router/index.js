@@ -43,7 +43,7 @@ const routes = [
 
 // Eksemplet på hvordan man kan skabe en route guard: https://github.com/arturpilarek/Asentrum/blob/main/src/router/index.js
 
-const router = createRouter({
+export const router = createRouter({
   history: createWebHistory(),
   routes,
 })
