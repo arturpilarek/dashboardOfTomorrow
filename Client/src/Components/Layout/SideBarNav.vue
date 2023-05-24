@@ -1,39 +1,59 @@
 <template>
   <v-app id="inspire">
-    <v-navigation-drawer v-model="drawer" app dark id="navBar" expand-on-hover rail >
-
+    <v-navigation-drawer
+      v-model="drawer"
+      app
+      dark
+      id="navBar"
+      expand-on-hover
+      rail
+    >
       <v-list-item>
         <v-list-item-content>
-          <img :src="dotLogo" alt="" class="logo">
+          <img :src="dotLogo" alt="" class="logo" />
         </v-list-item-content>
       </v-list-item>
 
-      
       <v-list>
         <v-list-group>
           <template v-slot:activator="{ props }">
-
-            <v-list-item prepend-icon="mdi-account" v-bind="props" title="PRIVATE"></v-list-item>
+            <v-list-item
+              prepend-icon="mdi-account"
+              v-bind="props"
+              title="PRIVATE"
+            ></v-list-item>
           </template>
 
-          <v-list-item v-for="([title, icon], i) in privateUser" :key="i" :title="title" :prepend-icon="icon"
-            :value="title"></v-list-item>
+          <v-list-item
+            v-for="([title, icon], i) in privateUser"
+            :key="i"
+            :title="title"
+            :prepend-icon="icon"
+            :value="title"
+          ></v-list-item>
         </v-list-group>
-
       </v-list>
 
       <v-list>
-
         <v-list-group no-action sub-group>
           <template v-slot:activator="{ props }">
-            <v-list-item prepend-icon="mdi-account-group" v-bind="props" title="TEAMS"></v-list-item>
+            <v-list-item
+              prepend-icon="mdi-account-group"
+              v-bind="props"
+              title="TEAMS"
+            ></v-list-item>
           </template>
 
-          <v-list-item v-for="([title, icon], i) in teamsUser" :key="i" :title="title" :prepend-icon="icon"
-            :value="title"></v-list-item>
+          <v-list-item
+            v-for="([title, icon], i) in teamsUser"
+            :key="i"
+            :title="title"
+            :prepend-icon="icon"
+            :value="title"
+          ></v-list-item>
         </v-list-group>
       </v-list>
-      
+
       <v-spacer></v-spacer>
 
       <v-container class="avatarContainer pa-7" fluid>
@@ -69,61 +89,6 @@
         </v-row>
       </v-container>
 
-      <v-container
-    class="avatarContainer pa-7"
-    fluid
-  >
-    <v-row>
-      <v-menu
-        rounded
-      >
-        <template v-slot:activator="{ props }">
-          <v-btn
-            icon
-            v-bind="props"
-          >
-            <v-avatar
-              color="pink"
-              size="large"
-            >
-              <span class="text-h5">{{ user.initials }}</span>
-            </v-avatar>
-          </v-btn>
-        </template>
-        <v-card>
-          <v-card-text>
-            <div class="mx-auto">
-              <v-avatar
-                color="pink"
-              >
-                <span class="text-h5">{{ user.initials }}</span>
-              </v-avatar>
-              <h3>{{ user.fullName }}</h3>
-              <p class="text-caption mt-1">
-                {{ user.email }}
-              </p>
-              <v-divider class="my-3"></v-divider>
-              <v-btn
-                rounded
-                variant="text"
-              >
-                Edit Account
-              </v-btn>
-              <v-divider class="my-3"></v-divider>
-              <v-btn
-                rounded
-                variant="text"
-                @click="logout"
-              >
-                Disconnect
-              </v-btn>
-            </div>
-          </v-card-text>
-        </v-card>
-      </v-menu>
-    </v-row>
-  </v-container>
-
       <!-- <v-container class="bottom-container pa-7">
       <v-menu bottom min-width="200px" rounded offset-y>
         <template v-slot:activator="{ on }">
@@ -135,13 +100,9 @@
         </template>
       </v-menu>
     </v-container> -->
-
-
     </v-navigation-drawer>
 
-
     <v-main>
-
       <create-task-modal></create-task-modal>
       <!-- <update-task-modal>
 
@@ -149,8 +110,6 @@
 
       <!--  -->
     </v-main>
-
-
   </v-app>
 </template>
 
@@ -160,6 +119,9 @@ import TaskCard from '../Elements/TaskCard.vue';
 import CreateTask from '../Elements/CreateTaskModal.vue'
 import CreateTaskModal from '../Elements/CreateTaskModal.vue';
 import UpdateTaskModal from '../Elements/UpdateTaskModal.vue';
+import { useAuthStore } from '@/stores';
+
+const authStore = useAuthStore();
 
 
 export default {
@@ -167,30 +129,34 @@ export default {
   data: () => ({
     dotLogo,
     drawer: null,
-    open: ['Users'],
+    open: ["Users"],
     user: {
-      initials: 'AI',
-      fullName: 'Anna Ipsen',
-      email: 'anna@anna.dk',
+      initials: "AI",
+      fullName: "Anna Ipsen",
+      email: "anna@anna.dk",
     },
     privateUser: [
-      ['Project 1', 'mdi-circle'],
-      ['Project 2', 'mdi-circle'],
+      ["Project 1", "mdi-circle"],
+      ["Project 2", "mdi-circle"],
     ],
     teamsUser: [
       ['Project 1', 'mdi-circle'],
       ['Project 2', 'mdi-circle'],
     ]
-  })
+  }),
+  methods: {
+    logout () {
+      return authStore.logout()
+    }
+  }
 }
 </script>
 
 <style lang="scss">
 #navBar {
-  background: linear-gradient(180deg, #47126B 0%, #EA698B 100%);
+  background: linear-gradient(180deg, #47126b 0%, #ea698b 100%);
   position: relative;
 }
-
 
 .v-list-item--density-default:not(.v-list-item--nav).v-list-item--one-line {
   color: white;
@@ -200,5 +166,4 @@ export default {
   position: absolute;
   bottom: 0;
 }
-
 </style>

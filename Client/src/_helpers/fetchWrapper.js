@@ -7,16 +7,16 @@ export const request = {
         return axios.get(baseUrl+url)
             .then(handleResponse)
     },
-    async post (url, body){
-        return await axios.post(baseUrl+url, body)
+    post (url, body){
+        return axios.post(baseUrl+url, body)
             .then(handleResponse)
     },
-    async put (url, body){
-        return await axios.put(baseUrl+url, body)
+    put (url, body){
+        return axios.put(baseUrl+url, body)
             .then(handleResponse)
     },
-    async delete (url, body){
-        return await axios.delete(baseUrl+url, body)
+    delete (url, body){
+        return axios.delete(baseUrl+url, body)
             .then(handleResponse)
     }
 }
@@ -32,5 +32,7 @@ function handleResponse(response) {
     }
     return response.data;
 
+        return data;
+    })
 }
 

@@ -1,4 +1,4 @@
-<script setup>
+<script>
 // import { onMounted, provide, ref } from "vue";
 import { useExpressRoute } from "./stores/apiData";
 import axios from "axios";
@@ -8,14 +8,15 @@ import TasksContainer from "./Components/Elements/TasksContainer.vue";
 import LoginView from "./views/loginView.vue";
 import SignupView from "./views/signupView.vue";
 
-import { useTeamsStore } from "./stores/teams.store";
-import { useBoardsStore } from "./stores/taskboards.store";
-
-const teamsStore = useTeamsStore();
-console.log(teamsStore.teams);
-
-const boardsStore = useBoardsStore();
-console.log(boardsStore.boards);
+export default {
+  components: {
+    SideBarNav,
+    TopBar,
+    TasksContainer,
+    LoginView,
+    SignupView,
+  },
+};
 </script>
 
 <template>
