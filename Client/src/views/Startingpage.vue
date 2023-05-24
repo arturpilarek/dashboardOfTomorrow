@@ -1,17 +1,11 @@
 <template>
-  <div>
-    <h2>Starting page</h2>
-    <p v-for="(taskboard, index) in boards" :key="index">
-      {{ taskboard.taskboardID }}
-    </p>
-  </div>
-</template>
+    <div>
 
-<script setup>
-import { useTaskDataStore } from "../stores/tasksData.store";
-
-const { boards } = useTaskDataStore();
-
-console.log(boards);
-</script>
+    </div>
+  </template>
+<script>
+export default {
+  name: "StartingPage",
   
+}
+</script>

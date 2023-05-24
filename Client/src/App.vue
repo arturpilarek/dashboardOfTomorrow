@@ -17,22 +17,20 @@ onMounted(() => {
 
 <template>
   <main>
-    <section id="main-wrapper">
-      <section>
-        <router-view name="sidebar"></router-view>
-      </section>
+    <v-container>
 
-      <section id="tbSection">
-        <router-view name="topbar"></router-view>
+      <section id="main-wrapper">
+        <section>
+          <router-view name="sidebar"></router-view>
+        </section>
+        
+        <section id="tbSection">
+          <router-view name="topbar"></router-view>
         <router-view></router-view>
       </section>
-    </section>
-    <tasks-container
-    class="ml-16"
-    ></tasks-container>
-     -->
-<!-- 
-     <tasks-container></tasks-container> -->
+    </section> 
+    
+  </v-container>
   </main>
 </template>
 
@@ -45,6 +43,8 @@ a {
 
 #main-wrapper{
   display: flex;
+  width: 100%;
+  height: 100%;
 }
 #tbSection{
   height: 100%;
