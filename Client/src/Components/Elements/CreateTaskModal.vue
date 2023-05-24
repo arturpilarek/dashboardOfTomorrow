@@ -1,80 +1,91 @@
 <template>
   <v-row justify="center" v-model="dialog">
-    <!-- <v-dialog v-model="dialog" persistent width="700"> -->
+    <v-dialog v-model="dialog" persistent width="700">
 
+      <template v-slot:activator="{ props }">
+        <v-btn color="#EA698B" v-bind="props" class="text-white">
+          + ADD TASK
+        </v-btn>
+      </template>
 
+      <v-card color="#ECECEC">
 
-    <v-card color="#ECECEC">
+        <v-container class="flex justify-center">
+          <v-col class="pl-6">
+            <!--taskname + close btn-->
+            <v-row class="d-flex justify-space-between">
+              <v-text-field label="Taskname"></v-text-field>
+              <v-btn @click="dialog = false" icon="mdi-close" variant="plain"></v-btn>
+            </v-row>
 
-      <v-container class="flex justify-center">
-        <v-col class="pl-6">
-          <v-row>
-            <v-card-title v-for="title in titles" :key="title.title" class="pr-16">
-              {{ title.title }}</v-card-title>
-          </v-row>
+            <!--subtitles-->
+            <v-row class="d-flex justify-space-between">
+              <v-card-subtitle class="p-16 me-16" v-for="sub in subtitles" :key="sub.text">
+                <c-card-text>{{ sub.text }}</c-card-text>
+              </v-card-subtitle>
+            </v-row>
 
-          <v-row class="d-flex justify-space-between">
-            <v-card-subtitle class="p-16 me-16" v-for="sub in subtitles" :key="sub.text">
-              <c-card-text>{{ sub.text }}</c-card-text>
-
-            </v-card-subtitle>
-          </v-row>
-
-          <v-row class="d-flex justify-space-between">
-            <v-menu>
-              <template v-slot:activator="{ props }">
-                <v-btn class="text-white" flat v-bind="props" append-icon="mdi-menu-down" color="#EA698B">
-                  <span>To Do</span>
-                </v-btn>
-              </template>
-              <v-list>
-                <v-list-item v-for="link in links" :key="link.text" @click="selectedStatus = link.text">
-                  <v-list-item-title class="text-black">{{ link.text }}</v-list-item-title>
-                </v-list-item>
-              </v-list>
-            </v-menu>
-
-            <v-avatar color="#EA698B" size="small" class="text-white">
-              <span class="text-h7">{{ user.initials }}</span>
-            </v-avatar>
-
-            <v-btn color="#EA698B" class="flex-grow">
-              <v-menu min-width="auto">
-                <template v-slot:activator="{ on }">
-                  <v-text-field class="text-white" type="date" v-on="on" v-model="due" density="compact"></v-text-field>
+            <v-row class="d-flex justify-space-between">
+              <!--dropdown-->
+              <v-menu>
+                <template v-slot:activator="{ props }">
+                  <v-btn class="text-white" flat v-bind="props" append-icon="mdi-menu-down" color="#EA698B">
+                    <span>To Do</span>
+                  </v-btn>
                 </template>
+                <v-list>
+                  <v-list-item v-for="link in links" :key="link.text" @click="selectedStatus = link.text">
+                    <v-list-item-title class="text-black">{{ link.text }}</v-list-item-title>
+                  </v-list-item>
+                </v-list>
               </v-menu>
-            </v-btn>
-          </v-row>
 
+              <!--avatar-->
+              <div class="pl-16">
+                <v-avatar color="#EA698B" size="small" class="text-white">
+                  <span class="text-h7">{{ user.initials }}</span>
+                </v-avatar>
+              </div>
 
+              <!--date-->
+              <div>
 
+                <VueDatePicker id="datePicker" :enable-time-picker="false" v-model="due"></VueDatePicker>
 
+              </div>
+            </v-row>
 
-          <v-textarea id="description" class="pt-6" label="Description" variant="solo" rows="10">
-          </v-textarea>
+            <!--description-->
+            <v-textarea id="description" class="pt-6" label="Description" variant="solo" rows="10">
+            </v-textarea>
 
-          <v-row class="d-flex justify-end pr-3">
-            <v-btn id="addBtn">
-              ADD TASK
-            </v-btn>
-          </v-row>
+            <!--add task btn-->
+            <v-row class="d-flex justify-end pr-3">
+              <v-btn id="addBtn" @click="showModal = false">
+                ADD TASK
+              </v-btn>
+            </v-row>
 
-        </v-col>
+          </v-col>
 
-
-
-      </v-container>
-    </v-card>
-    <!-- </v-dialog> -->
+        </v-container>
+      </v-card>
+    </v-dialog>
   </v-row>
 </template>
 
 <script>
-import format from 'date-fns/format'
+import VueDatePicker from '@vuepic/vue-datepicker';
+import '@vuepic/vue-datepicker/dist/main.css';
+
 
 
 export default {
+  name: 'CreateTaskModal',
+  emits: ['hideModal'],
+  components: {
+    VueDatePicker
+  },
   data() {
     return {
       dialog: false,
@@ -110,7 +121,5 @@ export default {
 }
 </script>
 
-<style>
-
-</style>
+<style scoped></style>
 

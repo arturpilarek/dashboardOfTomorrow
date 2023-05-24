@@ -4,7 +4,10 @@
     </div>
   </template>
 <script>
+
+
 export default {
-  name: "StartingPage"
+  name: "StartingPage",
+
 }
 </script>
