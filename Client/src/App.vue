@@ -10,7 +10,8 @@ import SignupView from "./views/signupView.vue";
 
 onMounted(() => {
   const taskDataStore = useTaskDataStore();
-  taskDataStore.getAll();
+  const { boards } = taskDataStore;
+  boards.length === 0 ? taskDataStore.getAll() : null;
 });
 </script>
 

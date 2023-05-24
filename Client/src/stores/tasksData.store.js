@@ -17,9 +17,6 @@ export const useTaskDataStore = defineStore({
 
       this.boards.push(...data.taskboards)
       this.teams.push(...data.teams)
-
-      console.log(this.boards)
-      console.log(this.teams)
     },
 
     //teams actions
