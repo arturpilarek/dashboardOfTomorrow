@@ -33,6 +33,7 @@
           v-model="user.password"
           type="password"
           label="Password"
+          :rules="rules.password"
           required
         ></v-text-field>
         <v-text-field
@@ -114,9 +115,9 @@ const rules = {
   ],
   password: [
     (value) => {
-      if (/^(?=.*\d)(?=.*[!@#$%^&*])*(?!.*[=-\s])(?=.*[a-z])(?=.*[A-Z]).{8,30}$/.test(value)) return true;
+      if (/^(?=.*\d)(?=.+[!@#$%^&*])(?!.*[=-\s])(?=.*[a-z])(?=.*[A-Z]).{8,30}$/.test(value)) return true;
 
-      return "Password must contain one big character and one number, and no space, = or -"
+      return "Password must contain at least one big character, one number and one special character ( no space, = or - )"
     },
   ],
 };
