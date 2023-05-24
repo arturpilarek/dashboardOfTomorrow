@@ -20,8 +20,7 @@ export const useAuthStore = defineStore({
       // store user details and jwt in local storage to keep user logged in between page refreshes
       localStorage.setItem('user', JSON.stringify(user))
 
-
-      await router.push('/')
+      await router.push("/")
 
       const data = useTaskDataStore()
       await data.getAll(this.user.userID)
@@ -43,7 +42,6 @@ export const useAuthStore = defineStore({
       this.user = user;
       localStorage.setItem('user', JSON.stringify(user))
     },
-
     async update (email, password, firstName, lastName) {
       const user = await request.put(`/updateUser/${this.user.id}`, {
         first_name: firstName,
