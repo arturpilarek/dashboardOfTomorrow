@@ -1,4 +1,4 @@
-import { useAuthStore } from '@/stores';
+import { useAuthStore } from '../stores/auth.store';
 import axios from "axios";
 const baseUrl = 'http://localhost:8081'
 

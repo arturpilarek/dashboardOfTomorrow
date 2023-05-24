@@ -1,9 +1,5 @@
 import {defineStore} from 'pinia'
 import {request} from "../_helpers/fetchWrapper.js";
-import {useAuthStore} from "./auth.store.js";
-
-const {user} = useAuthStore()
-
 
 export const useTaskDataStore = defineStore({
     id: 'teams',
@@ -18,7 +14,7 @@ export const useTaskDataStore = defineStore({
 
             this.boards = data.taskboards
             this.teams = data.teams
-
+            
             console.log(this.boards)
             console.log(this.teams)
         },
