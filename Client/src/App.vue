@@ -31,7 +31,7 @@ onMounted(() => {
     class="ml-16"
     ></tasks-container>
      -->
-<!-- 
+    <!-- 
      <tasks-container></tasks-container> -->
   </main>
 </template>
@@ -43,12 +43,11 @@ a {
   color: inherit;
 }
 
-#main-wrapper{
+#main-wrapper {
   display: flex;
 }
-#tbSection{
+#tbSection {
   height: 100%;
   width: 100%;
 }
-
 </style>

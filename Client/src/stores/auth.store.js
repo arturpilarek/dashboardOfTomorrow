@@ -1,8 +1,7 @@
-import { defineStore } from 'pinia'
-import {request} from "../_helpers/fetchWrapper.js";
-import { router } from '../router/index.js'
-import {useTaskDataStore} from "./tasksData.store.js";
-
+import { defineStore } from "pinia"
+import { request } from "../_helpers/fetchWrapper.js"
+import { router } from "../router/index.js"
+import { useTaskDataStore } from "./tasksData.store.js"
 
 export const useAuthStore = defineStore({
   id: 'auth',
