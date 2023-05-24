@@ -12,7 +12,7 @@
         <v-spacer></v-spacer>
 
         <div>
-          <v-btn id="addBtn"> + ADD TASK </v-btn>
+          <create-task-modal></create-task-modal>
         </div>
       </div>
     </v-container>
@@ -31,6 +31,7 @@
           <tableView />
         </v-window-item>
       </v-window>
+
       
     </v-container>
 
@@ -41,6 +42,7 @@
 import calendarView from "../../views/calendarView.vue";
 import tableView from "../../views/tableView.vue";
 import boardView from "../../views/boardView.vue";
+import createTaskModal from '../Elements/CreateTaskModal.vue';
 
 export default {
   name: "Topbar",
@@ -48,6 +50,7 @@ export default {
     calendarView,
     tableView,
     boardView,
+    createTaskModal
   },
   data() {
     return {

@@ -1,5 +1,5 @@
 <template>
-      <div class="taskContainer">
+      <!-- <div class="taskContainer">
     <v-row>
       <v-col cols="4">
         <div
@@ -43,14 +43,24 @@
         </v-list>
       </v-col>
     </v-row>
+  </div> -->
+  <div>
+    <h2>doing</h2>
+      <div v-for="todo in todos" :key="todo.todoID">
+        <todoCard :todo="todo"></todoCard>
+      </div>
   </div>
   
 </template>
 
 <script>
 import {fakeTaskboards} from '../../stores/fakeTaskboardsData.js';
+import {todoCard} from '../Elements/todoCard.vue'
 export default {
     name: 'TaskContainer',
+    components: {
+      todoCard
+    },
     data() {
       return {
         todos: []
@@ -70,8 +80,6 @@ export default {
   },
   mounted() {
     this.fetchTodos();
-    console.log("TaskContainer Data: ")
-    console.log(this.taskboards)
   }
 //   created() {
 //     const store = useStore()
