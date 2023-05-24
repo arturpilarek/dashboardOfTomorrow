@@ -1,16 +1,12 @@
 import { defineStore } from 'pinia'
 import {request} from "../_helpers/fetchWrapper.js";
-import { useTeamsStore } from '../stores/teams.store.js';
-import {useBoardsStore} from "./taskboards.store.js";
-import {useTasksStore} from "./tasks.store.js";
-import { router } from '../router/index.js'
 
 
 export const useAuthStore = defineStore({
   id: 'auth',
   state: () => ({
     // initialize state from local storage to enable user to stay logged in
-    user: JSON.parse(localStorage.getItem('user')),
+    user: JSON.parse(localStorage.getItem('user'))
   }),
   actions: {
     async login(email, password) {
@@ -30,13 +26,11 @@ export const useAuthStore = defineStore({
 
       await router.push('/')
     },
-
     logout (){
       this.user = null;
       localStorage.removeItem('user')
     },
-
-    async register (firstName, lastName, email, password, ) {
+    async register (email, password, firstName, lastName) {
       const user = await request.post('/register', {
         first_name: firstName,
         last_name: lastName,
