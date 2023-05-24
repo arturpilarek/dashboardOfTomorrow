@@ -31,7 +31,7 @@
           <tableView />
         </v-window-item>
       </v-window>
-      
+
     </v-container>
 
   </section>
@@ -51,18 +51,24 @@ export default {
   },
   data() {
     return {
-      tab: null,
-    };
-  },
-};
+        tabs: [
+            {tab: 'BOARD', to:'/Client/src/views/Startingpage.vue'},
+            {tab: 'CALENDAR', to:'/Client/src/views/Startingpage.vue'},
+            {tab: 'TABLE', to:'/Client/src/views/Startingpage.vue'}
+        ]
+    }
+}
+}
 </script>
 
 <style>
 #addBtn {
-  width: 113px;
-  height: 32px;
-  background: #ea698b;
-  color: white;
-  border-radius: 10px;
+width: 113px;
+height: 32px;
+background: #EA698B;
+color: white;
+border-radius: 10px;
 }
+
+
 </style>

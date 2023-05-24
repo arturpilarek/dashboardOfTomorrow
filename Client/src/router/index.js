@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router"
 import Sidebar from "../Components/Layout/SideBarNav.vue"
 import Topbar from "../Components/Layout/TopBar.vue"
-import { useAuthStore } from "../stores/auth.store.js"
 import StartingPage from "../views/StartingPage.vue"
 import EditUser from "../views/editUserView.vue"
 import Login from "../views/loginCompView.vue"
@@ -44,7 +43,7 @@ const routes = [
 
 // Eksemplet på hvordan man kan skabe en route guard: https://github.com/arturpilarek/Asentrum/blob/main/src/router/index.js
 
-export const router = createRouter({
+const router = createRouter({
   history: createWebHistory(),
   routes,
 })

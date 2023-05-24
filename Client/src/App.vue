@@ -27,8 +27,8 @@ export default {
 
       <section id="tbSection">
         <router-view name="topbar"></router-view>
-
-      </section>   -->
+        <router-view></router-view>
+      </section>
     </section>
     <!-- <tasks-container
     class="ml-16"

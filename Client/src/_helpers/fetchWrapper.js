@@ -32,7 +32,5 @@ function handleResponse(response) {
     }
     return response.data;
 
-        return data;
-    })
 }
 
