@@ -136,10 +136,6 @@
     </v-navigation-drawer>
 
     <v-main>
-      <create-task-modal></create-task-modal>
-      <!-- <update-task-modal>
-
-</update-task-modal> -->
 
       <!--  -->
     </v-main>

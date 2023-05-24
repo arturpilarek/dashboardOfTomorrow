@@ -12,7 +12,7 @@
         <v-spacer></v-spacer>
 
         <div>
-          <v-btn id="addBtn"> + ADD TASK </v-btn>
+          <createModal @click="showModal = false" @hide-modal="hideModal"></createModal>
         </div>
       </div>
     </v-container>
@@ -41,6 +41,8 @@
 import calendarView from "../../views/calendarView.vue";
 import tableView from "../../views/tableView.vue";
 import boardView from "../../views/boardView.vue";
+import createModal from '../Elements/CreateTaskModal.vue'
+import { ref } from 'vue';
 
 export default {
   name: "Topbar",
@@ -48,6 +50,7 @@ export default {
     calendarView,
     tableView,
     boardView,
+    createModal
   },
   data() {
     return {
@@ -57,7 +60,19 @@ export default {
             {tab: 'TABLE', to:'/Client/src/views/Startingpage.vue'}
         ]
     }
-}
+},
+setup() {
+    const showModal = ref(false);
+
+    return {
+      showModal
+    };
+  },
+  methods: {
+    hideModal() {
+      emit('hideModal')
+    }
+  }
 }
 </script>
 
