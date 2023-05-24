@@ -1,23 +1,17 @@
-<script>
-// import { onMounted, provide, ref } from "vue";
-import { useExpressRoute } from "./stores/apiData";
+<script setup>
+import { onMounted, ref } from "vue";
+import { useTaskDataStore } from "./stores/tasksData.store";
 import axios from "axios";
 import SideBarNav from "./Components/Layout/SideBarNav.vue";
-import TopBar from '../src/Components/Layout/TopBar.vue';
+import TopBar from "../src/Components/Layout/TopBar.vue";
 import TasksContainer from "./Components/Elements/TasksContainer.vue";
 import LoginView from "./views/loginView.vue";
 import SignupView from "./views/signupView.vue";
 
-export default {
-  components: {
-    SideBarNav,
-    TopBar,
-    TasksContainer,
-    LoginView,
-    SignupView
-  }
-}
-
+onMounted(() => {
+  const taskDataStore = useTaskDataStore();
+  taskDataStore.getAll();
+});
 </script>
 
 <template>
