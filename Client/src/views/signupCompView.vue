@@ -9,24 +9,6 @@
       </h2>
       <!-- change color of text -->
 
-      <v-alert
-        type="error"
-        variant="tonal"
-        density="compact"
-        closable
-        prominent
-        icon="mdi-alert-circle-outline"
-        :text="errorMessage"
-        class="mb-5"
-        v-if=" errorMessage !== '' "
-      ></v-alert>
-      <v-alert
-          v-if="statusMsg"
-          closable
-          :text="statusMsg"
-          type="success"
-      ></v-alert>
-
       <v-form validate-on="submit" @submit="signUp">
         <v-text-field
           v-model="user.firstName"
@@ -59,9 +41,29 @@
           label="Repeat password"
           required
         ></v-text-field>
+
+        <v-alert
+            type="error"
+            variant="tonal"
+            density="compact"
+            closable
+            prominent
+            icon="mdi-alert-circle-outline"
+            :text="errorMessage"
+            class="mb-5"
+            v-if=" errorMessage !== '' "
+        ></v-alert>
+        <v-alert
+            v-if="statusMsg"
+            closable
+            density="compact"
+            variant="tonal"
+            :text="statusMsg"
+            type="success"
+        ></v-alert>
+
         <v-btn type="submit" block class="mt-2 text-white" color="#EA698B"
-          >Sign up</v-btn
-        >
+          >Sign up</v-btn>
         <!-- change color to variable -->
       </v-form>
       <div class="mt-2">
