@@ -43,7 +43,7 @@ module.exports = async (req, res) => {
             await userObject.save();
         }
 
-        if(teamID){
+        if(teamID | !teamID == null | !teamID === ""){
             let teamObject = await TeamModel.findOne({teamID: teamID});
             //push the taskboard into user taskboard array
             teamObject.teamTasks.push(taskTodoID);

@@ -25,7 +25,7 @@ module.exports = async (req,res) => {
 
     try {      
         
-        if(teamID){
+        if(teamID | !teamID == null | !teamID === ""){
             let teamObject = await TeamModel.findOne({teamID: teamID});
             console.log(teamObject);
             teamObject.teamTaskboardID.push(taskboardID);

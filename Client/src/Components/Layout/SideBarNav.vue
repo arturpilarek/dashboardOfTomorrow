@@ -142,12 +142,7 @@
 
     <v-main>
 
-      <create-task-modal></create-task-modal>
-      <!-- <update-task-modal>
-
-</update-task-modal> -->
-
-      <!--  -->
+     
     </v-main>
 
 
@@ -157,7 +152,6 @@
 <script>
 import dotLogo from '../../assets/LogoSvg/dot.png'
 import TaskCard from '../Elements/TaskCard.vue';
-import CreateTask from '../Elements/CreateTaskModal.vue'
 import CreateTaskModal from '../Elements/CreateTaskModal.vue';
 import UpdateTaskModal from '../Elements/UpdateTaskModal.vue';
 

@@ -1,24 +1,36 @@
 <template>
-    <v-card>
+    <v-card class="todoCard">
       <v-card-title>{{ todo.todoName }}</v-card-title>
       <v-card-text>{{ todo.todoDescription }}</v-card-text>
-      <v-card-actions>
-        <v-btn color="primary" @click="completeTodo">Complete</v-btn>
-      </v-card-actions>
+      
     </v-card>
+    <v-dialog>
+        <v-card>
+            <v-card-title>{{ selectedTodo.todoName }}</v-card-title>
+            <v-card-text> {{ selectedTodo.todoDescription }}</v-card-text>
+        </v-card>
+
+        <v-card-actions>
+          <v-btn @click="closeModal">Close</v-btn>
+        </v-card-actions>
+    </v-dialog>
   </template>
   
   <script>
   export default {
     props: ['todo'],
-    methods: {
-      completeTodo() {
-        // Handle the logic to mark the todo as completed
-      }
-    }
+    
   }
   </script>
   
   <style scoped>
-  /* Add your custom card styling here */
+  .todoCard{
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+   .todoCard:hover{
+    background-color: grey;
+
+  }
+    
   </style>

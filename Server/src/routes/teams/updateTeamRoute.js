@@ -9,13 +9,13 @@ module.exports = async (req, res) => {
     let {teamName, teamDescription, teamMember} = req.body
     
     try {
-        await TeamModel.findOneAndUpdate(
+       let teamObject =  await TeamModel.findOneAndUpdate(
             {teamID: teamId},
             {teamName: teamName}, 
             {teamDescription: teamDescription},
             {teamMember: teamMember});
         
-        res.status(200).json('success!')
+        res.status(200).json(teamObject)
 
     }
     catch (err) {

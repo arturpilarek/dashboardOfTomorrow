@@ -37,6 +37,8 @@ const userAndTeamsRoute = require("./routes/teams/userAndTeamsRoute")
 
 //Super Route
 const superIDRoute = require("./routes/fetchAll/superRoute");
+const superTeamRoute = require("./routes/fetchAll/getAllTeams")
+const superBoardsRoute = require("./routes/fetchAll/getAllPrivateBoards")
 
 // Example route
 const exampleRoute = require("./routes/example/getExampleRoute")
@@ -80,7 +82,8 @@ router.post("/teams/removeUserFromTeam/:teamID", removeUserFromTeamRoute);
 
 //Super Routes
 router.get("/fetchAll/:userid", superIDRoute)
-router.get("/teams/addMember/:teamId", userAndTeamsRoute);
+router.get("/fetchAllTeams/:userID", superTeamRoute)
+router.get("/fetchAllPrivateBoards/:userID", superBoardsRoute)
 
 
 
