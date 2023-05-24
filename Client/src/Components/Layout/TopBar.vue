@@ -12,7 +12,7 @@
         <v-spacer></v-spacer>
 
         <div>
-          <createModal @click="showModal = false" @hide-modal="hideModal"></createModal>
+          <createModal @click="showModal = false" @hide-modal="hideModal" class="d-flex justify-end"></createModal>
         </div>
       </div>
     </v-container>
@@ -35,21 +35,24 @@
     </v-container>
 
 
+
+
+  </section>
 </template>
 
 <script>
-import calendarView from "../../views/calendarView.vue";
-import tableView from "../../views/tableView.vue";
-import boardView from "../../views/boardView.vue";
 import createModal from '../Elements/CreateTaskModal.vue'
 import { ref } from 'vue';
+import BoardView from "../../views/boardView.vue";
+import CalendarView from "../../views/calendarView.vue";
+import TableView from "../../views/tableView.vue";
 
 export default {
   name: "Topbar",
   components: {
-    calendarView,
-    tableView,
-    boardView,
+    CalendarView,
+    TableView,
+    BoardView,
     createModal
   },
   data() {
@@ -69,7 +72,10 @@ setup() {
     };
   },
   components: {
-    createModal
+    createModal,
+    BoardView,
+    CalendarView,
+    TableView
   },
   methods: {
     hideModal() {

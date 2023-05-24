@@ -6,8 +6,8 @@
           <h2>To Do</h2>
         </div>
         <div>
-          <div v-for="todo in todos.filter(todo => todo.todoState === 'todo')" :key="todo.todoID">
-            <todo-card :todo="todo"></todo-card>
+          <div v-for="todo in todos.filter(todo => todo.todoState === 'todo')" :key="todo.todoID" >
+            <todo-card :todo="todo" @open-modal="openModal"></todo-card>
           </div>
         </div>
       </v-col>
@@ -17,7 +17,7 @@
         </div>
         <div>
           <div v-for="todo in todos.filter(todo => todo.todoState === 'doing')" :key="todo.todoID">
-            <todo-card :todo="todo"></todo-card>
+            <todo-card :todo="todo" @open-modal="openModal"></todo-card>
           </div>
         </div>
       </v-col>
@@ -27,18 +27,20 @@
         </div>
         <div>
           <div v-for="todo in todos.filter(todo => todo.todoState === 'done')" :key="todo.todoID">
-            <todo-card :todo="todo"></todo-card>
+            <todo-card :todo="todo" @open-modal="openModal"></todo-card>
           </div>
         </div>
       </v-col>
     </v-row>
   </div>
+  <UpdateTaskModal ref="modalComponent"></UpdateTaskModal>
   
 </template>
 
 <script>
 import { fakeTaskboards } from '../../stores/fakeTaskboardsData.js';
 import TodoCard from '../Elements/todoCard.vue'
+import UpdateTaskModal from './UpdateTaskModal.vue';
 export default {
   name: 'TaskContainer',
 
@@ -50,9 +52,17 @@ export default {
     }
   },
   components: {
-    TodoCard
+    TodoCard,
+    UpdateTaskModal
   },
   methods: {
+    openModal(object) {
+      this.$refs.modalComponent.openModal(object);
+    },
+    closeModal() {
+      this.$refs.modalComponent.closeModal();
+    },
+  
 
     fetchTodos() {
       // Loop through the taskboards and extract the todos
