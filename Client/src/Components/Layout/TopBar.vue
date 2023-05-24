@@ -12,7 +12,7 @@
         <v-spacer></v-spacer>
 
         <div>
-          <create-task-modal></create-task-modal>
+          <createModal @click="showModal = false" @hide-modal="hideModal" class="d-flex justify-end"></createModal>
         </div>
       </div>
     </v-container>
@@ -39,25 +39,13 @@
     <v-spacer></v-spacer>
     <v-container>
 
-    <div>
-      <createModal @click="showModal = false" @hide-modal="hideModal" class="d-flex justify-end"></createModal>
-      <!-- <v-btn
-    id="addBtn"
-    @click="showModal = true"
-    
-    >
-    + ADD TASK
-</v-btn> -->
-    </div>
-    
-  </v-container>
-</section>
+
+
+    </v-container>
+  </section>
 </template>
 
 <script>
-import calendarView from "../../views/calendarView.vue";
-import tableView from "../../views/tableView.vue";
-import boardView from "../../views/boardView.vue";
 import createModal from '../Elements/CreateTaskModal.vue'
 import { ref } from 'vue';
 import BoardView from "../../views/boardView.vue";
@@ -78,9 +66,9 @@ export default {
     }
   },
   components: {
-    calendarView,
-    tableView,
-    boardView,
+    CalendarView,
+    TableView,
+    BoardView,
   },
   setup() {
     const showModal = ref(false);
@@ -94,7 +82,7 @@ export default {
     BoardView,
     CalendarView,
     TableView
-},
+  },
   methods: {
     hideModal() {
       emit('hideModal')
