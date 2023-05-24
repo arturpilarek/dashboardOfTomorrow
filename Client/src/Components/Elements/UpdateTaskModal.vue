@@ -1,10 +1,10 @@
 <template>
   <v-row justify="center">
-    <v-dialog
+    <!-- <v-dialog
       v-model="dialog"
       persistent
       width="1024"
-    >
+    > -->
 
 
     <v-card>
@@ -92,7 +92,7 @@
         </v-row>
       </v-container>
     </v-card>
-    </v-dialog>
+    <!-- </v-dialog> -->
   </v-row>
 </template>
 

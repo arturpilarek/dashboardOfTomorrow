@@ -8,11 +8,15 @@ import TasksContainer from "./Components/Elements/TasksContainer.vue";
 import LoginView from "./views/loginView.vue";
 import SignupView from "./views/signupView.vue";
 
-onMounted(() => {
-  const taskDataStore = useTaskDataStore();
-  const { boards } = taskDataStore;
-  boards.length === 0 ? taskDataStore.getAll() : null;
-});
+
+import { useTeamsStore } from "./stores/teams.store";
+import { useBoardsStore } from "./stores/taskboards.store";
+
+const teamsStore = useTeamsStore();
+console.log(teamsStore.teams);
+
+const boardsStore = useBoardsStore();
+console.log(boardsStore.boards);
 </script>
 
 <template>

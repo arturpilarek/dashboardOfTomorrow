@@ -34,7 +34,7 @@
 
     </v-container>
 
-  </section>
+
 </template>
 
 <script>
@@ -60,13 +60,16 @@ export default {
             {tab: 'TABLE', to:'/Client/src/views/Startingpage.vue'}
         ]
     }
-  },
-  setup() {
+},
+setup() {
     const showModal = ref(false);
 
     return {
       showModal
     };
+  },
+  components: {
+    createModal
   },
   methods: {
     hideModal() {

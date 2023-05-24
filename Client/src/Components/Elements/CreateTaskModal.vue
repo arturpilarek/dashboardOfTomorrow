@@ -34,7 +34,7 @@
                   </v-btn>
                 </template>
                 <v-list>
-                  <v-list-item v-for="link in links" :key="link.text">
+                  <v-list-item v-for="link in links" :key="link.text" @click="selectedStatus = link.text">
                     <v-list-item-title class="text-black">{{ link.text }}</v-list-item-title>
                   </v-list-item>
                 </v-list>
