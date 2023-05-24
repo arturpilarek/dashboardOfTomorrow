@@ -20,43 +20,87 @@
     <v-container>
       <v-window v-model="tab">
         <v-window-item value="board">
-          <boardView />
+          <BoardView />
         </v-window-item>
 
         <v-window-item value="calendar">
-          <calendarView />
+          <CalendarView />
         </v-window-item>
 
         <v-window-item value="table">
-          <tableView />
+          <TableView />
         </v-window-item>
       </v-window>
 
-      
+
     </v-container>
 
-  </section>
+    <p>{{ this.tabChosen }}</p>
+    <v-spacer></v-spacer>
+    <v-container>
+
+    <div>
+      <createModal @click="showModal = false" @hide-modal="hideModal" class="d-flex justify-end"></createModal>
+      <!-- <v-btn
+    id="addBtn"
+    @click="showModal = true"
+    
+    >
+    + ADD TASK
+</v-btn> -->
+    </div>
+    
+  </v-container>
+</section>
 </template>
 
 <script>
 import calendarView from "../../views/calendarView.vue";
 import tableView from "../../views/tableView.vue";
 import boardView from "../../views/boardView.vue";
-import createTaskModal from '../Elements/CreateTaskModal.vue';
+import createModal from '../Elements/CreateTaskModal.vue'
+import { ref } from 'vue';
+import BoardView from "../../views/boardView.vue";
+import CalendarView from "../../views/calendarView.vue";
+import TableView from "../../views/tableView.vue";
 
 export default {
   name: "Topbar",
+  data() {
+    return {
+      tab: null,
+      drawer: null,
+      tabs: [
+        { tab: 'BOARD', to: '/Client/src/views/Startingpage.vue' },
+        { tab: 'CALENDAR', to: '/Client/src/views/Startingpage.vue' },
+        { tab: 'TABLE', to: '/Client/src/views/Startingpage.vue' }
+      ]
+    }
+  },
   components: {
     calendarView,
     tableView,
     boardView,
-    createTaskModal
   },
-  data() {
+  setup() {
+    const showModal = ref(false);
+
     return {
-      tab: null,
+      showModal
     };
   },
+  components: {
+    createModal,
+    BoardView,
+    CalendarView,
+    TableView
+},
+  methods: {
+    hideModal() {
+      emit('hideModal')
+    }
+  }
+
 };
 </script>
 

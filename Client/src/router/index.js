@@ -7,6 +7,7 @@ import EditUser from "../views/editUserView.vue"
 import Login from "../views/loginCompView.vue"
 import Signup from "../views/signupCompView.vue"
 
+
 const routes = [
   {
     path: "/",
