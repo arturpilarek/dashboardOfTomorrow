@@ -19,20 +19,6 @@
             </v-row>
 
             <v-row class="d-flex justify-space-between">
-              <!--dropdown-->
-              <!-- <v-menu>
-                <template v-slot:activator="{ props }">
-                  <v-btn class="text-white" flat v-bind="props" append-icon="mdi-menu-down" color="#EA698B">
-                    <span>To Do</span>
-                  </v-btn>
-                </template>
-                <v-list>
-                  <v-list-item v-for="link in links" value="link.text" :key="link.text" @click="selectedStatus = link.text">
-                    <v-list-item-title class="text-black">{{ link.text }}</v-list-item-title>
-                  </v-list-item>
-                </v-list>
-                
-              </v-menu> -->
               <v-select class="custom-select" :items="links" v-model="todoState" theme="light" >
 
               </v-select>
