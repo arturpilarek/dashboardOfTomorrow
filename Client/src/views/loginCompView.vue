@@ -1,9 +1,10 @@
 <template>
-  <section class="ma-0 pa-0 d-flex">
-      <section class="gradientBox d-flex justify-center align-center">
+  <section id="wrapper" class="ma-0 pa-0 d-flex justify-center">
+      <section class="gradientBox d-flex justify-center align-center h-screen">
         <dot-animation/>
       </section>
-      <v-sheet width="400" class="mx-auto d-flex flex-column justify-center">
+    <v-spacer></v-spacer>
+      <v-sheet class="mx-auto d-flex flex-column justify-center">
         <h2 class="text-h2 mb-16 text-uppercase align-self-center text-purple">Welcome!</h2> <!-- change color of text -->
         <p class="text-overline">Please log in</p>
         <v-form @submit.prevent="login">
@@ -63,16 +64,15 @@ function login(e){
 </script>
 
 <style scoped lang="scss">
-
-.gradientBox {
-  background: linear-gradient(180deg, #47126B 0%, #EA698B 100%);
-  width: 60vw;
-  height: 100vh;
-  position: relative;
-  top: 0;
-  left: 0;
+#wrapper{
+  height: 90vh;
+  .gradientBox {
+    background: linear-gradient(180deg, #47126b 0%, #ea698b 100%);
+    width: 60vw;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+  }
 }
-
-
-
 </style>
