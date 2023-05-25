@@ -20,15 +20,15 @@
     <v-container>
       <v-window v-model="tab">
         <v-window-item value="board">
-          <boardView />
+          <BoardView />
         </v-window-item>
 
         <v-window-item value="calendar">
-          <calendarView />
+          <CalendarView />
         </v-window-item>
 
         <v-window-item value="table">
-          <tableView />
+          <TableView />
         </v-window-item>
       </v-window>
 
@@ -57,13 +57,16 @@ export default {
   },
   data() {
     return {
-        tabs: [
-            {tab: 'BOARD', to:'/Client/src/views/Startingpage.vue'},
-            {tab: 'CALENDAR', to:'/Client/src/views/Startingpage.vue'},
-            {tab: 'TABLE', to:'/Client/src/views/Startingpage.vue'}
-        ]
+      tab: null,
+      drawer: null,
+      tabs: [
+        { tab: 'BOARD', to: '/Client/src/views/Startingpage.vue' },
+        { tab: 'CALENDAR', to: '/Client/src/views/Startingpage.vue' },
+        { tab: 'TABLE', to: '/Client/src/views/Startingpage.vue' }
+      ]
     }
-},
+  },
+
 setup() {
     const showModal = ref(false);
 
