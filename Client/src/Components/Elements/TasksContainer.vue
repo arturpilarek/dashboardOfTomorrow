@@ -1,12 +1,12 @@
 <template>
   <div class="taskContainer">
     <v-row>
-      <v-col cols="4" >
+      <v-col cols="4">
         <div class="hBox">
           <h2>To Do</h2>
         </div>
         <div>
-          <div v-for="todo in todos.filter(todo => todo.todoState === 'todo')" :key="todo.todoID" >
+          <div v-for="todo in todos.filter(todo => todo.todoState === 'todo')" :key="todo.todoID">
             <todo-card :todo="todo" @open-modal="openModal"></todo-card>
           </div>
         </div>
@@ -34,13 +34,14 @@
     </v-row>
   </div>
   <UpdateTaskModal ref="modalComponent"></UpdateTaskModal>
-  
 </template>
 
 <script>
 import { fakeTaskboards } from '../../stores/fakeTaskboardsData.js';
 import TodoCard from '../Elements/todoCard.vue'
 import UpdateTaskModal from './UpdateTaskModal.vue';
+import { useTaskDataStore } from '../../stores/tasksData.store';
+
 export default {
   name: 'TaskContainer',
 
@@ -48,7 +49,7 @@ export default {
     return {
       todos: [],
       modalOpen: false,
-      selectedTodo: null
+      selectedTodo: null,
     }
   },
   components: {
@@ -62,10 +63,10 @@ export default {
     closeModal() {
       this.$refs.modalComponent.closeModal();
     },
-  
+
 
     fetchTodos() {
-      // Loop through the taskboards and extract the todos
+      // Loop through the taskboards and get the todos
       fakeTaskboards.forEach((taskboard) => {
         this.todos.push(...taskboard.taskboardTodos);
       });
@@ -74,11 +75,17 @@ export default {
   },
   mounted() {
     this.fetchTodos();
+  },
+  setup() {
+    const store = useTaskDataStore()
+
+    console.log("this is data");
+    console.log(store)
+    return{
+      store
+    }
   }
-  //   created() {
-  //     const store = useStore()
-  //     this.tasks = store.state.tasks
-  //   }
+
 }
 
 </script>

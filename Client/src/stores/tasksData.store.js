@@ -2,20 +2,25 @@ import {defineStore} from 'pinia'
 import {request} from "../_helpers/fetchWrapper.js";
 
 export const useTaskDataStore = defineStore({
-    id: 'teams',
+    id: 'useTaskDataStore',
     state: () => ({
         boards: [],
         teams: []
     }),
+    getters: {
+        getTeams(){
+            return state.teams
+        }
+    },
     actions: {
         //get all actions
         async getAll () {
             const data = await request.get(`/fetchAll/user1`)
 
-            this.boards = data.taskboards
-            this.teams = data.teams
-            
-            console.log(this.boards)
+            this.boards.push(...data.taskboards)
+            this.teams.push(...data.teams)
+                        
+             console.log(this.boards)
             console.log(this.teams)
         },
         async getAllTeams (){

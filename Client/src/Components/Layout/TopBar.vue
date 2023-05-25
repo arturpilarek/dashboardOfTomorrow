@@ -40,12 +40,39 @@
   </section>
 </template>
 
-<script>
+<script setup>
 import createModal from '../Elements/CreateTaskModal.vue'
 import { ref } from 'vue';
 import BoardView from "../../views/boardView.vue";
 import CalendarView from "../../views/calendarView.vue";
 import TableView from "../../views/tableView.vue";
+import { useTaskDataStore } from '../../stores/tasksData.store';
+import { onMounted } from 'vue';
+
+const tab = ref(null);
+const drawer = ref(null);
+const tabs = ref([
+  { tab: 'BOARD', to: '/Client/src/views/Startingpage.vue' },
+  { tab: 'CALENDAR', to: '/Client/src/views/Startingpage.vue' },
+  { tab: 'TABLE', to: '/Client/src/views/Startingpage.vue' }
+
+]);
+const data = ref({})
+
+onMounted(() => {
+ 
+})
+  
+
+</script >
+<!-- 
+< script >
+import createModal from '../Elements/CreateTaskModal.vue'
+import { ref } from 'vue';
+import BoardView from "../../views/boardView.vue";
+import CalendarView from "../../views/calendarView.vue";
+import TableView from "../../views/tableView.vue";
+import { useTaskDataStore } from '../../stores/tasksData.store';
 
 export default {
   name: "Topbar",
@@ -67,8 +94,16 @@ export default {
     }
   },
 
-setup() {
+  setup() {
     const showModal = ref(false);
+
+    // const fetchData = async () => {
+    //   const store = useTaskDataStore()
+    //   await store.getAll();
+
+    // };
+    // fetchData();
+
 
     return {
       showModal
@@ -83,19 +118,18 @@ setup() {
   methods: {
     hideModal() {
       emit('hideModal')
-    }
+    },
+
   }
 }
-</script>
+</script> -->
 
 <style>
 #addBtn {
-width: 113px;
-height: 32px;
-background: #EA698B;
-color: white;
-border-radius: 10px;
+  width: 113px;
+  height: 32px;
+  background: #EA698B;
+  color: white;
+  border-radius: 10px;
 }
-
-
 </style>
