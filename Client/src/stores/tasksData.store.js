@@ -86,13 +86,13 @@ export const useTaskDataStore = defineStore({
 
         //task actions
         async createTask (name, description, state, completed, taskboardId, teamId) {
-            this.tasks = await request.post('/todos/create', {
+            await request.post('/todos/create', {
                 todoName: name,
                 todoDescription: description,
                 todoState: state,
                 todoCompleted: completed,
                 taskboardID: taskboardId,
-                userID: user.userID,
+                userID: 'user1',
                 teamID: teamId
             })
             if (teamID) {
@@ -112,6 +112,9 @@ export const useTaskDataStore = defineStore({
         async deleteTask (taskId) {
             await request.delete(`/todos/${taskId}`)
             await this.getAll()
+        },
+        scream() {
+            console.log("die motherfucker die :)")
         }
     }
 })

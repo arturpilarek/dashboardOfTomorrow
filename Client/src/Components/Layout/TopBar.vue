@@ -12,7 +12,7 @@
         <v-spacer></v-spacer>
 
         <div>
-          <createModal @click="showModal = false" @hide-modal="hideModal" class="d-flex justify-end"></createModal>
+          <createModal  ref="closeModal" @click="showModal = false" class="d-flex justify-end"></createModal>
         </div>
       </div>
     </v-container>
@@ -81,9 +81,9 @@ setup() {
     TableView
   },
   methods: {
-    hideModal() {
-      emit('hideModal')
-    }
+    closeModal() {
+      this.$refs.closeModal.closeModal();
+    },
   }
 }
 </script>

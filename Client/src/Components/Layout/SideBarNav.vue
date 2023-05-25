@@ -75,8 +75,6 @@
                 </template>
                 <v-list-item id="team-items"
                   v-for="taskboard in team.teamTaskboards"
-                  
-                  v-bind="props"
                   prepend-icon="mdi-circle"
                   :title="taskboard.taskboardName"
                   :value="taskboard.taskboardName"
