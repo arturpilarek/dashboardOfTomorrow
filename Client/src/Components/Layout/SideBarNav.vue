@@ -15,9 +15,8 @@
         </v-list-item-content>
       </v-list-item>
 
-
     <!-- Private -->
-    <v-list v-model:opened="open">
+    <v-list v-if="taskDataStore.boards[0]" v-model:opened="open">
         <v-list-group value="private">
           <template v-slot:activator="{ props }">
             <v-list-item
@@ -28,36 +27,14 @@
           </template>
           <v-list-item
               prepend-icon="mdi-circle"
-              v-for="project in privateUserNew"
-              :key="project.taskboardId"
+              v-for="project in taskDataStore.boards"
+              :key="project.taskboardID"
               :title="project.taskboardName"
               :value="project.taskboardName"
           ></v-list-item>
         </v-list-group>
-    
-      <!--
-        <v-list-group value="teams">
-          <template v-slot:activator="{ props }">
-            <v-list-item
-                v-bind="props"
-                prepend-icon="mdi-account-group"
-                title="Teams"
-            ></v-list-item>
-          </template>
-            <v-list-item
-                prepend-icon="mdi-circle"
-                v-for="project in teamsUserNew"
-                :key="project.taskboardId"
-                :title="project.taskboardName"
-                :value="project.taskboardName"
-            ></v-list-item>
-            
-          </v-list-group>
-        -->
-          <!-- Ny teams her -->
-          <!-- Notes: 
-          1. taskboard må ikke have samme navn, kan være det ændre -->
           
+    <!-- Teams -->
             <v-list-group value="teams">
             <template v-slot:activator="{ props }">
               <v-list-item
@@ -66,27 +43,25 @@
                   title="Teams"
               ></v-list-item>
             </template>
-            <v-list-group v-for="team in teams" :value="team.teamName" :key="team.teamID">
+            <v-list-group v-for="team in taskDataStore.teams" :value="team.teamName" :key="team.teamID">
                 <template v-slot:activator="{ props }">
                   <v-list-item
                   v-bind="props"
                   :title="team.teamName"
                   ></v-list-item>
                 </template>
-                <v-list-item id="team-items"
+                <v-list-item
                   v-for="taskboard in team.teamTaskboards"
-                  
-                  v-bind="props"
                   prepend-icon="mdi-circle"
                   :title="taskboard.taskboardName"
                   :value="taskboard.taskboardName"
-                  :key="taskboard.taskboardId"
+                  :key="taskboard.taskboardID"
               ></v-list-item>
                 
             </v-list-group>
           </v-list-group>
         </v-list>
-
+        
       <v-spacer></v-spacer>
 
       <v-container class="avatarContainer pa-7" fluid>
@@ -123,23 +98,10 @@
           </v-menu>
         </v-row>
       </v-container>
-
-      <!-- <v-container class="bottom-container pa-7">
-      <v-menu bottom min-width="200px" rounded offset-y>
-        <template v-slot:activator="{ on }">
-          <v-btn icon x-large v-on="on">
-            <v-avatar color="pink" size="48">
-              <span class="white--text text-h5">{{ user.initials }}</span>
-            </v-avatar>
-          </v-btn>
-        </template>
-      </v-menu>
-    </v-container> -->
     </v-navigation-drawer>
 
     <v-main>
 
-      <!--  -->
     </v-main>
   </v-app>
 </template>
@@ -152,8 +114,11 @@ import CreateTaskModal from "../Elements/CreateTaskModal.vue";
 import UpdateTaskModal from "../Elements/UpdateTaskModal.vue";
 import { ref, onMounted } from "vue";
 import { useAuthStore } from "../../stores/auth.store";
+import { useTaskDataStore } from "../../stores/tasksData.store";
+import { storeToRefs } from "pinia";
 
 const authStore = useAuthStore();
+const taskDataStore = useTaskDataStore();
 
 const drawer = ref(null);
 const open = ref(["Users"]);
@@ -162,79 +127,8 @@ const user = ref({
   fullName: "Anna Ipsen",
   email: "anna@anna.dk",
 });
-
-const privateUser = ref([
-  ["Project 1", "mdi-circle"],
-  ["Project 2", "mdi-circle"],
-]);
-
-const teamsUser = ref([
-  ["Project 1", "mdi-circle"],
-  ["Project 2", "mdi-circle"],
-]);
-
-const privateUserNew = ref([
-    {
-        taskboardId: "todo3",
-        taskboardName: "Awesome mormor",
-        prependIcon: "mdi-circle"
-      },
-      {
-        taskboardId: "todo4",
-        taskboardName: "Awesome farfar",
-        prependIcon: "mdi-circle"
-      },
-    ])
-
- const teams = ref([
-      {
-        teamName: "team123",
-        teamID: "tante30",
-        teamTaskboards: [
-          {
-            taskboardId: "ID number 1",
-            taskboardName: "taskboard Name 1",
-            prependIcon: "mdi-circle"
-          },
-          {
-            taskboardId: "ID number 2",
-            taskboardName: "taskboard Name 2",
-            prependIcon: "mdi-circle"
-          },
-          {
-            taskboardId: "ID number 3",
-            taskboardName: "taskboard Name 3",
-            prependIcon: "mdi-circle"
-          },
-        ],
-
-      },
-      {
-        teamName: "team321",
-        teamID: "onkel15",
-        teamTaskboards: [
-          {
-            taskboardId: "ID number banana 32",
-            taskboardName: "taskboard Name xx",
-            prependIcon: "mdi-circle"
-          },
-          {
-            taskboardId: "hitler taskboard",
-            taskboardName: "taskboard Name hello",
-            prependIcon: "mdi-circle"
-          },
-          {
-            taskboardId: "hjelm",
-            taskboardName: "zzzZZZZz",
-            prependIcon: "mdi-circle"
-          },
-        ],
-
-      },
-    ])   
-
     onMounted(() => {
-      setRandomColors()
+      setTimeout(()=>{setRandomColors()}, 1500)
     })
 
     function setRandomColors() {

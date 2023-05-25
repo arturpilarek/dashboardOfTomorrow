@@ -1,12 +1,24 @@
-<script setup>
+<script>
 import { useTaskDataStore } from "./stores/tasksData.store";
 import { onMounted } from "vue";
 
-onMounted(() => {
-  const taskDataStore = useTaskDataStore();
-  const { boards } = taskDataStore;
-  boards.length === 0 ? taskDataStore.getAll() : null;
-});
+export default{
+  app: "app",
+  setup() {
+    async function fetchAll(){
+    const store = useTaskDataStore()
+      const piniaData = await store.getAll();
+      data.value = piniaData
+      console.log(piniaData)
+  }
+
+  onMounted(() => {
+    fetchAll();
+  })
+
+  fetchAll()
+  }
+}
 </script>
 
 <template>

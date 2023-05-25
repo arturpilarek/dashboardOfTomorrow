@@ -7,6 +7,11 @@ export const useTaskDataStore = defineStore({
         boards: [],
         teams: []
     }),
+    getters: {
+        getBoards() {
+            return this.boards
+        }
+    },
     actions: {
         //get all actions
         async getAll () {
